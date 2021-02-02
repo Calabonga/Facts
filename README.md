@@ -1,7 +1,7 @@
 # Проект "Только факты"
 
 ### [ASP.NET Core MVC "Только факты" (NET5.0)](https://github.com/Calabonga/Facts/wiki)
-### [О приложении])(https://github.com/Calabonga/Facts/wiki/%D0%9E-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8)
+### [О приложении](https://github.com/Calabonga/Facts/wiki/%D0%9E-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8)
 ### [Цели и задачи проекта](https://github.com/Calabonga/Facts/wiki/%D0%A6%D0%B5%D0%BB%D0%B8-%D0%B8-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0)
 ### [Затронутые аспекты](https://github.com/Calabonga/Facts/wiki/%D0%97%D0%B0%D1%82%D1%80%D0%BE%D0%BD%D1%83%D1%82%D1%8B%D0%B5-%D0%B0%D1%81%D0%BF%D0%B5%D0%BA%D1%82%D1%8B)
 ### [Основные функциональные возможности](https://github.com/Calabonga/Facts/wiki/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D0%B8)
