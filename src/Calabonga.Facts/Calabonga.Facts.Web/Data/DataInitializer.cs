@@ -1,13 +1,13 @@
-﻿using Calabonga.Facts.Web.Infrastructure;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Calabonga.Facts.Web.Infrastructure;
 using Calabonga.Microservices.Core.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Calabonga.Facts.Web.Data
 {
