@@ -35,7 +35,7 @@ namespace Calabonga.Facts.Web.Data
             var roles = AppData.Roles.ToArray();           
             IdentityResult identityResult;
 
-            if (userManager == null || roleManager == null)
+            if (userManager is null or roleManager is null)
             {
                 throw new MicroserviceArgumentNullException("UserManager or RoleManager not registered");
             }
@@ -45,7 +45,7 @@ namespace Calabonga.Facts.Web.Data
                 await roleManager.CreateAsync(new IdentityRole(role));
             }
 
-            if (await userManager.FindByEmailAsync(username) != null)
+            if (await userManager.FindByEmailAsync(username) is not null)
             {
                 return;
             }
@@ -70,7 +70,7 @@ namespace Calabonga.Facts.Web.Data
 
         private static void IdentityResultHandler(IdentityResult result)
         {
-            if (!result.Succeeded)
+            if (result.Succeeded is false)
             {
                 var message = string.Join(", ", result.Errors.Select(x => $"{x.Code}: {x.Description}"));
                 throw new MicroserviceDatabaseException(message);
