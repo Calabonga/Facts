@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 using Calabonga.Facts.Web.Infrastructure;
@@ -83,7 +81,6 @@ namespace Calabonga.Facts.Web.Data
                     var message = string.Join(", ", identityResultRole.Errors.Select(x => $"{x.Code}: {x.Description}"));
                     throw new MicroserviceDatabaseException(message);
                 }
-
             }
 
             await context.SaveChangesAsync();
