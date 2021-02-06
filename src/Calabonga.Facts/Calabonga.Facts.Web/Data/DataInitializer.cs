@@ -35,7 +35,7 @@ namespace Calabonga.Facts.Web.Data
             var roles = AppData.Roles.ToArray();           
             IdentityResult identityResult;
 
-            if (userManager is null or roleManager is null)
+            if (userManager == null || roleManager == null)
             {
                 throw new MicroserviceArgumentNullException("UserManager or RoleManager not registered");
             }
