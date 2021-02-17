@@ -1,6 +1,4 @@
-using System;
-
-namespace Calabonga.Facts.Web.Models
+namespace Calabonga.Facts.Web.ViewModels
 {
     public class ErrorViewModel
     {

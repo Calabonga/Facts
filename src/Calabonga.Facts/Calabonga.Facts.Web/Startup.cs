@@ -1,5 +1,5 @@
 using Calabonga.Facts.Web.Data;
-
+using Calabonga.Facts.Web.Infrastructure.Mappers.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -35,6 +35,8 @@ namespace Calabonga.Facts.Web
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddAutoMapper(typeof(Startup).Assembly);
 
             services.AddControllersWithViews();
         }
