@@ -1,25 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Calabonga.Facts.Web.Data.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Calabonga.Facts.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContextBase
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        /// <summary>
-        /// Configures the schema needed for the identity framework.
-        /// </summary>
-        /// <param name="builder">
-        /// The builder being used to construct the model for this context.
-        /// </param>
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfigurationsFromAssembly(typeof(Startup).Assembly);
-            base.OnModelCreating(builder);
-        }
+        public DbSet<Fact> Facts { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
     }
 }

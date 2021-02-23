@@ -16,7 +16,7 @@
 * [x] Создание ViewModels для сущностей и настройка маппинга (Automapper)
 * [x] Изменение шаблонов от Microsoft.AspNetCore.Identity UI
 * [x] Шаблоны ASP.NET MVC (_Layout) и управление ими
-* [ ] Реализация в ApplicationDbContext автоматическое обновление свойств CreatedAt, UpdatedAt, CreatedBy, UpdatedBy (унаследованных от типа Auditable)
+* [x] Реализация в ApplicationDbContext автоматическое обновление свойств CreatedAt, UpdatedAt, CreatedBy, UpdatedBy (унаследованных от типа Auditable)
 * [ ] Страницы сайта для посетителя
     * [ ] Обновление разметки главной страницы
     * [ ] Страница "О сайте"
