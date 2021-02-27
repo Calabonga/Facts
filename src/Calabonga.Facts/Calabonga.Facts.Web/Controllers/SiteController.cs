@@ -8,6 +8,9 @@ namespace Calabonga.Facts.Web.Controllers
     {
         public IActionResult Index(int? pageIndex, string tag, string search)
         {
+            ViewData["Index"] = pageIndex;
+            ViewData["Tag"] = tag;
+            ViewData["Search"] = search;
             return View();
         }
 

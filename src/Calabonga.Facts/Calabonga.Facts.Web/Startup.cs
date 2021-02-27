@@ -67,8 +67,20 @@ namespace Calabonga.Facts.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "index",
+                    pattern: "{controller=Site}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}"); 
+
+                endpoints.MapControllerRoute(
+                    name: "index",
+                    pattern: "{controller=Site}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}"); 
+
+                endpoints.MapControllerRoute(
+                    name: "index",
+                    pattern: "{controller=Site}/{action=Index}/{pageIndex:int?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Site}/{action=Index}/{pageIndex?}/{tag?}/{search?}");
+                    pattern: "{controller=Site}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
             });
