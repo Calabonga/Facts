@@ -1,26 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.ViewModels;
 
 namespace Calabonga.Facts.Web.Controllers
 {
-    public class HomeController : Controller
+    public class SiteController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index([FromServices] ApplicationDbContext context)
+        public IActionResult Index(int? pageIndex, string tag, string search)
         {
             return View();
         }

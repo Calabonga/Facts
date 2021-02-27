@@ -1,5 +1,6 @@
 using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.Infrastructure.Mappers.Base;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -51,7 +52,7 @@ namespace Calabonga.Facts.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Site/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -67,7 +68,8 @@ namespace Calabonga.Facts.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Site}/{action=Index}/{pageIndex?}/{tag?}/{search?}");
+
                 endpoints.MapRazorPages();
             });
         }
