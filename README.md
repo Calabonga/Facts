@@ -18,21 +18,36 @@
 * [x] Шаблоны ASP.NET MVC (_Layout) и управление ими
 * [x] Реализация в ApplicationDbContext автоматическое обновление свойств CreatedAt, UpdatedAt, CreatedBy, UpdatedBy (унаследованных от типа Auditable)
 * [x] Определить маршруты для MVC
-* [ ] Страницы сайта для посетителя
-    * [ ] Обновление разметки главной страницы
-    * [ ] Страница "О сайте"
-    * [ ] Страница "Обратная связь" (Notification)
-    * [ ] Реализация постраничного просмотра списка фактов на главной странице
-    * [ ] Страница детального просмотра выбранного факта
-* [ ] Страницы сайта для администратора
-    * [ ] Страница "панель управления" (навигатор управления)
-    * [ ] Реализация постраничного просмотра списка сообщений (Notification)
-    * [ ] Страница "добавление факта"
-    * [ ] Страница "редактирования факта"
-    * [ ] Страница "удаления факта"
-    * [ ] Страница "отправки почтового сообщения"
-* [ ] BackgroundWorker по отправки почтовых писем из таблицы Notification
-* [ ] Отправка почты на примере Yandex Domain EMail. Реализация IEmailService
+* [ ] Mediatr: Инфраструктура для Notification
+  * [ ] Mediatr: NotificationBase
+  * [ ] Mediatr: NotificationHandlerBase
+  * [ ] Mediatr: ErrorNotification
+  * [ ] Mediatr: ErrorNotificationHandler
+  * [ ] Mediatr: FeedbackNotification
+  * [ ] Mediatr: FeedbackNotificationHandler
+* [ ] Создание главной страницы (без разбиение на страницы)
+  * [ ] Метод в контроллере FactsController
+  * [ ] Mediatr: GetPagedRequest
+  * [ ] Mediatr: GetPagedResponse
+* [ ] TagHelper: Создание pager: IPagedListTagHelperService, PagerData, PagedListHelper
+* [ ] Подключение Pager на главную страницу
+* [ ] Страница детального просмотра выбранного факта
+  * [ ] Рефакторинг partial view отображения факта на главной странице
+  * [ ] Создание partial представлений "мелких" компонентов
+* [ ] Страница "Обратная связь" 
+  * [ ] Ообавление записей в список уведомлений (Notification)
+  * [ ] Mediatr: PostNotificationRequest
+  * [ ] Mediatr: PostNotificationResponse
+* [ ] Администратор: Страница "панель управления" (навигатор управления)
+* [ ] Администратор: Страница "добавление факта"
+* [ ] Администратор: Страница "редактирования факта"
+* [ ] Администратор: Страница "удаления факта"
+* [ ] Администратор: Реализация постраничного просмотра списка сообщений (Notification)
+* [ ] Администратор: Страница "отправки почтового сообщения"
+* [ ] HostedService: Сработка по расписанию (Cron)
+  * [ ] Отправка почты. Создание IEmailService
+  * [ ] INotificationProvider обработчик Notification, отправка сообщений и обновление статуса отправки
+  * [ ] Реализация BackgroundWorker для отправки почтовых писем из таблицы Notification
 
 # Дополнительно
 * [ASP.NET Core MVC "Только факты" (NET5.0)](https://github.com/Calabonga/Facts/wiki)
