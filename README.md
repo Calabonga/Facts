@@ -18,13 +18,13 @@
 * [x] Шаблоны ASP.NET MVC (_Layout) и управление ими
 * [x] Реализация в ApplicationDbContext автоматическое обновление свойств CreatedAt, UpdatedAt, CreatedBy, UpdatedBy (унаследованных от типа Auditable)
 * [x] Определить маршруты для MVC
-* [ ] Mediatr: Инфраструктура для Notification
-  * [ ] Mediatr: NotificationBase
-  * [ ] Mediatr: NotificationHandlerBase
-  * [ ] Mediatr: ErrorNotification
-  * [ ] Mediatr: ErrorNotificationHandler
-  * [ ] Mediatr: FeedbackNotification
-  * [ ] Mediatr: FeedbackNotificationHandler
+* [x] Mediatr: Инфраструктура для Notification
+  * [x] Mediatr: NotificationBase
+  * [x] Mediatr: NotificationHandlerBase
+  * [x] Mediatr: ErrorNotification
+  * [x] Mediatr: ErrorNotificationHandler
+  * [x] Mediatr: FeedbackNotification
+  * [x] Mediatr: FeedbackNotificationHandler
 * [ ] Создание главной страницы (без разбиение на страницы)
   * [ ] Метод в контроллере FactsController
   * [ ] Mediatr: GetPagedRequest

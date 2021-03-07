@@ -15,7 +15,6 @@ namespace Calabonga.Facts.Web.Data.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id);
-            builder.Property(x => x.Content).HasMaxLength(3000).IsRequired();
             builder.Property(x => x.CreatedAt).IsRequired();
             builder.Property(x => x.CreatedBy).IsRequired().HasMaxLength(50);
             builder.Property(x => x.UpdatedAt);
