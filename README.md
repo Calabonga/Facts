@@ -25,7 +25,7 @@
   * [x] Mediatr: ErrorNotificationHandler
   * [x] Mediatr: FeedbackNotification
   * [x] Mediatr: FeedbackNotificationHandler
-* [ ] Объединение и минификация статических ресурсов в ASP.NET Core 
+* [x] Объединение и минификация статических ресурсов в ASP.NET Core 
 * [ ] Создание главной страницы (без разбиение на страницы)
   * [ ] Метод в контроллере FactsController
   * [ ] Mediatr: GetPagedRequest
