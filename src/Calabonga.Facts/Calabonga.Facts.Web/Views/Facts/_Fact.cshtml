@@ -1,0 +1,25 @@
+﻿@model Calabonga.Facts.Web.ViewModels.FactViewModel
+<div class="card my-3">
+    <div class="card-header">
+        <div class="row">
+            <div class="col">
+                <div class="float-start">@Model.CreatedAt.ToString("d")</div>
+            </div>
+            <div class="col">
+                <div class="float-end"><partial name="_FactLink" model="Model.Id" /></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <p class="lead">
+                    @Model.Content
+                </p>
+                <p>
+                    <partial name="_Tags" model="Model.Tags" />
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

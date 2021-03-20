@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Facts.Web", "Calabonga.Facts.Web\Calabonga.Facts.Web.csproj", "{356148D6-3B61-4560-87D2-6FB7FE278F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calabonga.Facts.Web.Tests", "Calabonga.Facts.Web.Tests\Calabonga.Facts.Web.Tests.csproj", "{813A928C-C72F-49CD-B95B-1B548AFC257A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.Facts.Web.Tests", "Calabonga.Facts.Web.Tests\Calabonga.Facts.Web.Tests.csproj", "{813A928C-C72F-49CD-B95B-1B548AFC257A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

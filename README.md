@@ -26,10 +26,10 @@
   * [x] Mediatr: FeedbackNotification
   * [x] Mediatr: FeedbackNotificationHandler
 * [x] Объединение и минификация статических ресурсов в ASP.NET Core 
-* [ ] Создание главной страницы (без разбиение на страницы)
-  * [ ] Метод в контроллере FactsController
-  * [ ] Mediatr: GetPagedRequest
-  * [ ] Mediatr: GetPagedResponse
+* [x] Создание главной страницы (без разбиение на страницы)
+  * [x] Метод в контроллере FactsController
+  * [x] Mediatr: FactGetPagedRequest
+  * [x] Mediatr: FactGetPagedResponse
 * [ ] TagHelper: Создание pager: IPagedListTagHelperService, PagerData, PagedListHelper
 * [ ] Подключение Pager на главную страницу
 * [ ] Страница детального просмотра выбранного факта

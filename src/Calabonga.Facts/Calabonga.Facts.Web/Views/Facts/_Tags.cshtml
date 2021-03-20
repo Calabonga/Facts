@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Calabonga.Facts.Web.ViewModels.TagViewModel>
+
+@foreach (var tag in Model)
+{
+    <span class="badge bg-light text-dark">@tag.Name</span>
+}

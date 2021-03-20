@@ -69,19 +69,19 @@ namespace Calabonga.Facts.Web
             {
                 endpoints.MapControllerRoute(
                     name: "index",
-                    pattern: "{controller=Site}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}"); 
+                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}"); 
 
                 endpoints.MapControllerRoute(
                     name: "index",
-                    pattern: "{controller=Site}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}"); 
+                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}"); 
 
                 endpoints.MapControllerRoute(
                     name: "index",
-                    pattern: "{controller=Site}/{action=Index}/{pageIndex:int?}");
+                    pattern: "{controller=Facts}/{action=Index}/{pageIndex:int?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Site}/{action=Index}/{id?}");
+                    pattern: "{controller=Facts}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
             });
