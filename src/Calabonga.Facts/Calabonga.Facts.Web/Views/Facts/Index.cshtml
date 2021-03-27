@@ -6,12 +6,19 @@
 
 @if (Model is not null)
 {
-    <pager asp-text="GHBSKJHBADKJBDAS DAS D"></pager>
+
 
     foreach (var fact in Model.Result.Items)
     {
         <partial name="_Fact" model="fact" />
     }
+
+    <pager class="my-5" asp-paged-list-page-size="Model.Result.PageSize"
+           asp-paged-list-total-count="Model.Result.TotalCount"
+           asp-paged-list-page-index="Model.Result.PageIndex"
+           asp-paged-list-url="index"
+           asp-controller="facts"
+           asp-route-parameter="pageIndex"></pager>
 }
 
 @section Column

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,9 +18,9 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Queries
     {
         public FactGetPagedRequest(int pageIndex, string? tag, string? search)
         {
+            PageIndex = pageIndex - 1 < 0 ? 0 : pageIndex - 1;
             Search = search;
             Tag = tag;
-            PageIndex = pageIndex;
         }
 
         public int PageIndex { get; }
@@ -54,7 +53,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Queries
                 .GetPagedListAsync(
                     include: i => i.Include(x => x.Tags),
                     orderBy: o => o.OrderByDescending(x => x.CreatedAt),
-                    pageIndex: request.PageIndex, 
+                    pageIndex: request.PageIndex,
                     pageSize: request.PageSize,
                     cancellationToken: cancellationToken);
 

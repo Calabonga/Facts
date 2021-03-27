@@ -30,8 +30,8 @@
   * [x] Метод в контроллере FactsController
   * [x] Mediatr: FactGetPagedRequest
   * [x] Mediatr: FactGetPagedResponse
-* [ ] TagHelper: Создание pager: IPagedListTagHelperService, PagerData, PagedListHelper
-* [ ] Подключение Pager на главную страницу
+* [x] TagHelper: Создание pager: IPagedListTagHelperService, PagerData, PagedListHelper
+* [x] Подключение Pager на главную страницу
 * [ ] Страница детального просмотра выбранного факта
   * [ ] Рефакторинг partial view отображения факта на главной странице
   * [ ] Создание partial представлений "мелких" компонентов

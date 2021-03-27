@@ -1,6 +1,8 @@
 using Calabonga.AspNetCore.Controllers.Extensions;
 using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper;
 using Calabonga.UnitOfWork;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +43,9 @@ namespace Calabonga.Facts.Web
             services.AddCommandAndQueries(typeof(Startup).Assembly);
 
             services.AddControllersWithViews();
+
+            // dependency injection
+            services.AddTransient<IPagerTagHelperService, PagerTagHelperService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,11 +74,11 @@ namespace Calabonga.Facts.Web
             {
                 endpoints.MapControllerRoute(
                     name: "index",
-                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}"); 
+                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}");
 
                 endpoints.MapControllerRoute(
                     name: "index",
-                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}"); 
+                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}");
 
                 endpoints.MapControllerRoute(
                     name: "index",
