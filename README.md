@@ -33,8 +33,9 @@
 * [x] TagHelper: Создание pager: IPagedListTagHelperService, PagerData, PagedListHelper
 * [x] Подключение Pager на главную страницу
 * [ ] Страница детального просмотра выбранного факта
-  * [ ] Рефакторинг partial view отображения факта на главной странице
-  * [ ] Создание partial представлений "мелких" компонентов
+  * [ ] Разметка страницы отображения выбранного факта
+  * [ ] Mediatr: FactGetByIdRequest
+  * [ ] Mediatr: FactGetByIdResponse
 * [ ] Страница "Обратная связь" 
   * [ ] Ообавление записей в список уведомлений (Notification)
   * [ ] Mediatr: PostNotificationRequest
