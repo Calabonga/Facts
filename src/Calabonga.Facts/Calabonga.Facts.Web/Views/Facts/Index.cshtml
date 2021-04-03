@@ -6,11 +6,9 @@
 
 @if (Model is not null)
 {
-
-
     foreach (var fact in Model.Result.Items)
     {
-        <partial name="_Fact" model="fact" />
+        <partial name="_Fact" model="fact" view-data="ViewData" />
     }
 
     <pager class="my-5" asp-paged-list-page-size="Model.Result.PageSize"

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Security.Policy;
 
 namespace Calabonga.Facts.Web
 {
@@ -30,6 +32,12 @@ namespace Calabonga.Facts.Web
                 config.Password.RequireDigit = false;
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
+            });
+
+            services.AddRouting(config =>
+            {
+                config.LowercaseQueryStrings = true;
+                config.LowercaseUrls = true;
             });
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
