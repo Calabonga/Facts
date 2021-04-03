@@ -33,9 +33,13 @@
 * [x] TagHelper: Создание pager: IPagedListTagHelperService, PagerData, PagedListHelper
 * [x] Подключение Pager на главную страницу
 * [ ] Страница детального просмотра выбранного факта
+  * [ ] Настройка и проверка Route для Show.cshtml 
   * [ ] Разметка страницы отображения выбранного факта
   * [ ] Mediatr: FactGetByIdRequest
   * [ ] Mediatr: FactGetByIdResponse
+* [ ] Реалиазиция фильтрации фактов на главной странице
+    * [ ] По метке (tag)
+    * [ ] По слову поиска (search)
 * [ ] Страница "Обратная связь" 
   * [ ] Ообавление записей в список уведомлений (Notification)
   * [ ] Mediatr: PostNotificationRequest
