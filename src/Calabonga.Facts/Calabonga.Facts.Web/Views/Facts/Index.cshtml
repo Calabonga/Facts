@@ -21,10 +21,57 @@
 
 @section Column
 {
-    <div class="my-3">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+    <div class="mt-3">
+        <form class="d-flex" asp-controller="Facts" asp-action="Index" method="get">
+            <div class="input-group mb-3">
+                <input type="search" class="form-control" placeholder="поиск по слову" id="search" name="search">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Поиск</button>
+            </div>
         </form>
+
+        <span>найдено @(Model.Ok ? Model.Result.TotalCount.ToString() : "Фактов не найдено")</span>
+
+        @if (!string.IsNullOrEmpty(GetTag()))
+        {
+            <span>по метке:</span>
+            <a asp-controller="Facts" asp-action="Index" asp-route-tag="" asp-route-search="@GetSearch()">
+                <span class="badge rounded-pill bg-danger">
+                    @GetTag()
+                    <i class="fa fa-times"></i>
+                </span>
+            </a>
+        }
+        @if (!string.IsNullOrEmpty(GetSearch()))
+        {
+            <span>по запросу:</span>
+            <a asp-controller="Facts" asp-action="Index" asp-route-tag="@GetTag()" asp-route-search="">
+                <span class="badge rounded-pill bg-danger">
+                    @GetSearch()
+                    <i class="fa fa-times"></i>
+                </span>
+            </a>
+        }
+
+
     </div>
+
+
+}
+
+
+@functions
+{
+    // Calabonga: WHAT I MADE 11
+
+    private string GetTag()
+    {
+        var queryParams = ViewData["tag"]?.ToString();
+        return queryParams ?? string.Empty;
+    }
+
+    private string GetSearch()
+    {
+        var queryParams = ViewData["search"]?.ToString();
+        return queryParams ?? string.Empty;
+    }
 }

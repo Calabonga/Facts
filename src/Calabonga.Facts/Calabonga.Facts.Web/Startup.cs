@@ -2,25 +2,21 @@ using Calabonga.AspNetCore.Controllers.Extensions;
 using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper;
 using Calabonga.UnitOfWork;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Security.Policy;
+using System.Threading.Tasks;
 
 namespace Calabonga.Facts.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -70,6 +66,7 @@ namespace Calabonga.Facts.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -81,22 +78,35 @@ namespace Calabonga.Facts.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "index",
-                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}");
+                    "index",
+                    "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{search:regex([a-zА-Я])}/{pageIndex:int?}");
 
                 endpoints.MapControllerRoute(
-                    name: "index",
-                    pattern: "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}");
+                    "index",
+                    "{controller=Facts}/{action=Index}/{tag:regex([a-zА-Я])}/{pageIndex:int?}");
 
                 endpoints.MapControllerRoute(
-                    name: "index",
-                    pattern: "{controller=Facts}/{action=Index}/{pageIndex:int?}");
+                    "index",
+                    "{controller=Facts}/{action=Index}/{pageIndex:int?}");
 
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Facts}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Facts}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
+
+
+                #region disable some pages
+
+                // Calabonga: WHAT I MADE 1
+
+                endpoints.MapGet("/Identity/Account/Register", context => Task.Factory.StartNew(() =>
+                    context.Response.Redirect("/Identity/Account/Login?returnUrl=~%2F", true, true)));
+
+                endpoints.MapPost("/Identity/Account/Register", context => Task.Factory.StartNew(() => 
+                    context.Response.Redirect("/Identity/Account/Login?returnUrl=~%2F", true, true)));
+
+                #endregion
             });
         }
     }

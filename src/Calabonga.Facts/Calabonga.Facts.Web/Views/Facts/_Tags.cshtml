@@ -2,5 +2,7 @@
 
 @foreach (var tag in Model)
 {
-    <span class="badge bg-light text-dark">@tag.Name</span>
+    // Calabonga: WHAT I MADE 6
+    <a asp-controller="Facts" asp-action="Index" asp-route-tag="@tag.Name" 
+       class="badge bg-light text-dark" style="text-decoration: none">@tag.Name</a>
 }

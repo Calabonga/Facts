@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper.Base;
 
 namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
 {
     /// <summary>
-    /// // Calabonga: update summary (2021-03-27 12:15 IPagerTagHelperService)
+    /// Pager TagHelperService for Razor
     /// </summary>
     public interface IPagerTagHelperService
     {
@@ -15,7 +15,7 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
     }
 
     /// <summary>
-    /// // Calabonga: update summary (2021-03-27 01:05 IPagerTagHelperService)
+    /// Pager TagHelperService for Razor
     /// </summary>
     public class PagerTagHelperService : IPagerTagHelperService
     {

@@ -19,7 +19,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Site" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Site" asp-action="Random" title="случайно выбранный факт">Случайный</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Site" asp-action="Cloud" title="облако тегов">Облако меток</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="~/" title="вход для администратора">Вход</a>
                         </li>
 
                         <partial name="_LoginPartial" />
@@ -36,17 +42,18 @@
         <footer class="row text-muted">
             <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Site" asp-action="About">About</a>
+                    <a class="nav-link" asp-controller="Site" asp-action="About">О проекте</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Site" asp-action="Privacy">Privacy</a>
+                    <a class="nav-link" asp-controller="Site" asp-action="Feedback">Обратная связь</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <a class="nav-link" asp-controller="Site" asp-action="Rss">RSS-канал фактов</a>
                 </li>
             </ul>
-            <p class="text-center">
-                &copy; 2021 - Calabonga SOFT
+
+            <p class="small text-center">
+                &copy; 2021 - <a class="link-secondary" style="text-decoration: none" href="https://www.calabonga.net">Calabonga SOFT</a>
             </p>
         </footer>
     </div>

@@ -1,0 +1,46 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="row justify-content-center my-5">
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+        <h1>@ViewData["Title"]</h1>
+        <form id="account" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            
+            <input type="hidden" asp-for="Input.ReturnUrl"/>
+
+            <div class="mb-3">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control"/>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control"/>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="Input.RememberMe" id="RememberMe">
+                <label class="form-check-label" for="RememberMe" asp-for="Input.RememberMe"></label>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+            <div class="mb-3">
+                <p>
+                    <a id="forgot-password" asp-page="./ForgotPassword">Забыли пароль?</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,17 +1,27 @@
-﻿@using Calabonga.OperationResults
-@model Calabonga.OperationResults.OperationResult<Calabonga.Facts.Web.ViewModels.FactViewModel>
+﻿@model Calabonga.OperationResults.OperationResult<Calabonga.Facts.Web.ViewModels.FactViewModel>
 
 @{
+    Layout = "_Layout";
     ViewData["HideLink"] = true;
 }
-@if (!Model.Ok)
-{
-    <h1>Ошибка</h1>
-    <p class="alert alert-warning">
-        @Model.Metadata.Message
-    </p>
-}
-else
-{
-    <partial name="_Fact" model="Model.Result" />
-}
+<div class="row">
+    <div class="col">
+
+        @if (!Model.Ok)
+        {
+            <h1>Ошибка</h1>
+            <p class="alert alert-warning">
+                @Model.Metadata.Message
+            </p>
+        }
+        else
+        {
+            <partial name="_Fact" model="Model.Result" />
+        }
+    </div>
+</div>
+
+@*@section Column
+    {
+
+    }*@
