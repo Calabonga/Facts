@@ -8,7 +8,6 @@ namespace Calabonga.Facts.Web.Controllers
     {
         public IActionResult About() => View();
         
-        // Calabonga: WHAT I DID
         public IActionResult Random() => View();
         
         public IActionResult Cloud() => View();

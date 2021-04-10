@@ -1,9 +1,10 @@
-﻿@model Guid
+﻿@using Calabonga.Facts.Web.Extensions
+@model Guid
 @if (ViewData["HideLink"] is not null)
 {
     <span>Скопировать ссылку</span>
 }
 else
 {
-    <a asp-controller="Facts" asp-action="Show" asp-route-id="@Model">Открыть</a>
+    <a asp-controller="Facts" asp-action="Show" asp-route-id="@Model" asp-route-returnUrl="@Context.GetReturnUrl()">Открыть</a>
 }

@@ -6,8 +6,11 @@ using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.ViewModels;
 using Calabonga.OperationResults;
+using Calabonga.PredicatesBuilder;
 using Calabonga.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq.Expressions;
 
 namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 {
@@ -45,20 +48,38 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Queries
         public override async Task<OperationResult<IPagedList<FactViewModel>>> Handle(FactGetPagedRequest request, CancellationToken cancellationToken)
         {
             var operation = OperationResult.CreateResult<IPagedList<FactViewModel>>();
-
+            var predicate = BuildPredicate(request);
             var items = await _unitOfWork.GetRepository<Fact>()
-                .GetPagedListAsync(
-                    include: i => i.Include(x => x.Tags),
-                    orderBy: o => o.OrderByDescending(x => x.CreatedAt),
-                    pageIndex: request.PageIndex,
-                    pageSize: request.PageSize,
-                    cancellationToken: cancellationToken);
+                    .GetPagedListAsync(
+                        predicate: predicate,
+                        include: i => i.Include(x => x.Tags),
+                        orderBy: o => o.OrderByDescending(x => x.CreatedAt),
+                        pageIndex: request.PageIndex,
+                        pageSize: request.PageSize,
+                        cancellationToken: cancellationToken);
 
             var mapped = _mapper.Map<IPagedList<FactViewModel>>(items);
 
             operation.Result = mapped;
             operation.AddSuccess("Success");
             return operation;
+        }
+
+        private Expression<Func<Fact, bool>> BuildPredicate(FactGetPagedRequest request)
+        {
+            var predicate = PredicateBuilder.True<Fact>();
+
+            if (!string.IsNullOrWhiteSpace(request.Search))
+            {
+                predicate = predicate.And(x => x.Content.Contains(request.Search));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.Tag))
+            {
+                predicate = predicate.And(x => x.Tags.Select(t => t.Name).Contains(request.Tag));
+            }
+
+            return predicate;
         }
     }
 }

@@ -23,3 +23,8 @@
         </div>
     </div>
 </div>
+
+@if (ViewData["ReturnUrl"] is not null)
+{
+    <a href="@Url.Content(ViewData["ReturnUrl"].ToString())" class="btn btn-sm btn-outline-secondary">Назад</a>
+}
