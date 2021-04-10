@@ -8,16 +8,13 @@ namespace Calabonga.Facts.Web.Controllers
     {
         public IActionResult About() => View();
         
-        // Calabonga: WHAT I MADE 7
+        // Calabonga: WHAT I DID
         public IActionResult Random() => View();
         
-        // Calabonga: WHAT I MADE 8
         public IActionResult Cloud() => View();
         
-        // Calabonga: WHAT I MADE 9
         public IActionResult Feedback() => View();
-        
-        // Calabonga: WHAT I MADE 10
+
         public IActionResult Rss() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

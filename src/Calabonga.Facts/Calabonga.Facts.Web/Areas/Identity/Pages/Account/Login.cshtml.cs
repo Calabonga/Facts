@@ -11,11 +11,10 @@ using Microsoft.Extensions.Logging;
 
 namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
 {
-    // Calabonga: WHAT I MADE 2
+    // Calabonga: WHAT I DID
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
@@ -24,7 +23,6 @@ namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
             ILogger<LoginModel> logger,
             UserManager<IdentityUser> userManager)
         {
-            _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
         }
@@ -34,20 +32,22 @@ namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
 
         [TempData]
-        public string ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
         public class InputModel
         {
             [Required]
             [EmailAddress]
-            public string Email { get; set; }
+            [Display(Name="Email")]
+            public string? Email { get; set; }
 
+            [Display(Name="Пароль")]
             [Required]
             [DataType(DataType.Password)]
-            public string Password { get; set; }
+            public string? Password { get; set; }
 
             [Display(Name = "Запомнить ненадолго?")]
             public bool RememberMe { get; set; }
@@ -55,7 +55,7 @@ namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
             public string ReturnUrl { get; set; } = "~/";
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string? returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
@@ -72,7 +72,7 @@ namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
 
@@ -90,7 +90,7 @@ namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, Input.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {

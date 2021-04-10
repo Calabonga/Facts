@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Calabonga.Facts.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="Shortcut Icon" href="~/favicon.ico" />
     @await RenderSectionAsync("Headers", required: false)
 </head>
 <body>
@@ -24,9 +25,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Site" asp-action="Cloud" title="облако тегов">Облако меток</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="~/" title="вход для администратора">Вход</a>
-                        </li>
+                        
 
                         <partial name="_LoginPartial" />
                     </ul>

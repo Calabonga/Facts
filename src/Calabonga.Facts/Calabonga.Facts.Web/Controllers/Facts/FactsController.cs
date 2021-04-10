@@ -14,7 +14,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts
 
         public async Task<IActionResult> Index(int? pageIndex, string tag, string search)
         {
-            // Calabonga: WHAT I MADE 12
+            // Calabonga: WHAT I DID
             ViewData["search"] = search;
             ViewData["tag"] = tag;
             return View(await _mediator.Send(new FactGetPagedRequest(pageIndex ?? 1, tag, search), HttpContext.RequestAborted));
