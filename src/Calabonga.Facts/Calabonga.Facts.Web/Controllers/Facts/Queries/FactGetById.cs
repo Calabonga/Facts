@@ -6,9 +6,6 @@ using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,10 +13,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 {
     public class FactGetByIdRequest : OperationResultRequestBase<FactViewModel>
     {
-        public FactGetByIdRequest(Guid id)
-        {
-            Id = id;
-        }
+        public FactGetByIdRequest(Guid id) => Id = id;
 
         public Guid Id { get; }
     }
