@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Base;
 using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.ViewModels;

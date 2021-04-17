@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Calabonga.Facts.Web.Areas.Identity.Pages.Account
 {
-    // Calabonga: WHAT I DID
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
     {

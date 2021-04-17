@@ -12,6 +12,8 @@ namespace Calabonga.Facts.Web
 {
     public class Program
     {
+
+        // Calabonga: WHAT I DID
         public static async Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()

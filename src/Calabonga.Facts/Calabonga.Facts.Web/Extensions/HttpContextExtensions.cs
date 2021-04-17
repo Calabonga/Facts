@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Calabonga.Facts.Web.Extensions
 {
-    // Calabonga: WHAT I DID
     public static class HttpContextExtensions
     {
         public static string GetReturnUrl(this HttpContext source) =>
