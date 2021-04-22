@@ -29,5 +29,14 @@ namespace Calabonga.Facts.Web.ViewModels
         [DataType(DataType.MultilineText)]
         [Display(Name = "Текст сообщения")]
         public string Body { get; set; } = null!;
+
+        [Required(ErrorMessage = "{0} - обязтельное поле")]
+        [Display(Name = "Результат вычисления")]
+        public int HumanNumber { get; set; }
+
+
+        /// <summary>Returns a string that represents the current object.</summary>
+        /// <returns>A string that represents the current object.</returns>
+        public override string ToString() => $"Subject: {Subject} UserName: {UserName} MailFrom: {MailFrom} Body: {Body}";
     }
 }

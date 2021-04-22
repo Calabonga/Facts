@@ -10,7 +10,9 @@ namespace Calabonga.Facts.Web.Controllers.Facts
     {
         private readonly IMediator _mediator;
 
-        public FactsController(IMediator mediator) => _mediator = mediator;
+        public FactsController(
+            IMediator mediator)
+            => _mediator = mediator;
 
         public async Task<IActionResult> Index(int? pageIndex, string tag, string search)
         {
@@ -20,8 +22,9 @@ namespace Calabonga.Facts.Web.Controllers.Facts
             var operation = await _mediator.Send(new FactGetPagedRequest(index, tag, search), HttpContext.RequestAborted);
             if (operation.Ok && operation.Result.TotalPages < index)
             {
-                return RedirectToAction(nameof(Index), new { tag, search, pageIndex = 1 });
+                return RedirectToAction(nameof(Index), new {tag, search, pageIndex = 1});
             }
+
             return View(operation);
         }
 

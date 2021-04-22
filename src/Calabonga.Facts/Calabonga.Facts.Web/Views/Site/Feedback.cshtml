@@ -37,6 +37,13 @@
                 <textarea asp-for="Body" rows="6" class="form-control"></textarea>
                 <span asp-validation-for="Body" class="text-danger"></span>
             </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <img src="@Url.Action("GetImage", "Site")" class="img-thumbnail"/>
+                    <input asp-for="HumanNumber" class="form-control" type="number" />
+                    <span asp-validation-for="HumanNumber" class="text-danger"></span>
+                </div>
+            </div>
             <p>
                 <button class="btn btn-primary" type="submit">Отправить</button>
             </p>
