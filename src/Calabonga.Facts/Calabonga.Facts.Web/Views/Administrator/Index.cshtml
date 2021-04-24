@@ -1,8 +1,65 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@{
+    Layout = "_Layout";
     ViewData["Title"] = "Панель управления";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p class="alert alert-info">
-    Простите, страница в разработке.
-</p>
+<h1>@TempData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <div>
+            <h4>@Localizer["Categories"]</h4>
+            <ul>
+                <li>
+                    <a asp-controller="Categories" asp-action="Index">@Localizer["CategoryList"]</a>
+                </li>
+                <li>
+                    <a asp-controller="Categories" asp-action="Add">@Localizer["AddCategory"]</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        <div>
+            <h4>@Localizer["Posts"]</h4>
+            <ul>
+                <li>
+                    <a asp-controller="Posts" asp-action="Index">@Localizer["PostList"]</a>
+                </li>
+                <li>
+                    <a asp-controller="Posts" asp-action="Add">@Localizer["AddPost"]</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        <div>
+            <h4>Факты</h4>
+            <ul>
+                <li> <a asp-controller="Facts" asp-action="Index">Все факты</a></li>
+                <li> <a asp-controller="Facts" asp-action="Add" >Добавить факт</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6">
+        <div>
+            <h4>Почтовые сообщения</h4>
+            <ul>
+                <li> <a asp-controller="Administrator" asp-action="Notifications">Все сообщения</a></li>
+                <li> <a asp-controller="Administrator" asp-action="SendNotification">Отправить сообщение</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Posts", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-primary">@Localizer["Logout"]</button>
+        </form>
+    </div>
+</div>
+
