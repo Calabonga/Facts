@@ -22,8 +22,6 @@ namespace Calabonga.Facts.Web.Controllers
         private readonly IMediator _mediator;
         private readonly IWebHostEnvironment _environment;
         private readonly List<SelectListItem> _subjects;
-
-        // Calabonga: WHAT I DID
         public SiteController(
             IMediator mediator,
             IWebHostEnvironment environment)
@@ -40,7 +38,6 @@ namespace Calabonga.Facts.Web.Controllers
 
         public IActionResult Cloud() => View();
 
-        // Calabonga: WHAT I DID
         public IActionResult Feedback()
         {
             ViewData["Subjects"] = _subjects;
@@ -82,7 +79,6 @@ namespace Calabonga.Facts.Web.Controllers
             return View(model);
         }
 
-        // Calabonga: WHAT I DID
         public IActionResult FeedbackSent()
         {
             if (TempData["Feedback"] is null)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Calabonga.Facts.Web.Mediatr.Base;
 using Calabonga.UnitOfWork;
 using Microsoft.Extensions.Logging;
@@ -20,5 +20,4 @@ namespace Calabonga.Facts.Web.Mediatr
         {
         }
     }
-
 }

@@ -1,4 +1,4 @@
-﻿using Calabonga.EntityFrameworkCore.Entities.Base;
+using Calabonga.EntityFrameworkCore.Entities.Base;
 
 namespace Calabonga.Facts.Web.Data
 {

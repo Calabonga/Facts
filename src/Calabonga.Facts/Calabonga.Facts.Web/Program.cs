@@ -12,8 +12,6 @@ namespace Calabonga.Facts.Web
 {
     public class Program
     {
-
-        // Calabonga: WHAT I DID
         public static async Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
@@ -26,16 +24,13 @@ namespace Calabonga.Facts.Web
             try
             {
                 Log.Information("Starting web host");
-
                 var host = CreateHostBuilder(args).Build();
-
                 using (var scope = host.Services.CreateScope())
                 {
                     await DataInitializer.InitializeAsync(scope.ServiceProvider);
                 }
 
-                host.Run();
-
+                await host.RunAsync();
                 return 0;
             }
             catch (Exception ex)
@@ -50,7 +45,7 @@ namespace Calabonga.Facts.Web
 
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>

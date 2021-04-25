@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Calabonga.Facts.Web.ViewModels
 {
-    // Calabonga: WHAT I DID
     /// <summary>
     /// Feedback Viewmodel
     /// </summary>

@@ -1,0 +1,16 @@
+﻿@model Calabonga.Facts.Web.ViewModels.NotificationViewModel
+
+@{
+    // Calabonga: WHAT I DID (2021-04-25 10:37 NotificationById)
+    Layout = "_Layout";
+    ViewData["Title"] = $"Сообщение {Model.Id}";
+    ViewData["CanSend"] = true;
+}
+
+<h3>@ViewData["Title"]</h3>
+
+@if (Model != null)
+{
+    <partial name="_NotificationView" model="Model" view-data="ViewData" />
+}
+

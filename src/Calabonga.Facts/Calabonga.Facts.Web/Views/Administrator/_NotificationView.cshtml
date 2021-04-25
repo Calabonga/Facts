@@ -1,0 +1,60 @@
+﻿@model Calabonga.Facts.Web.ViewModels.NotificationViewModel
+@{
+    var canSend = ViewData["CanSend"] != null && bool.Parse(ViewData["CanSend"].ToString()!);
+    // Calabonga: WHAT I DID (2021-04-25 10:37 _NotificationView)
+}
+@if (Model != null)
+{
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <span>@Model.CreatedAt</span>
+            <span>От кого @Model.CreatedBy</span>
+            <div class="float-end  p-1 ">
+                <span class="rounded-1 @(Model.IsCompleted ? "bg-success" : "bg-danger")">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="card-title">
+                <h5>
+                    @if (canSend)
+                    {
+                        @Model.Title
+                    }
+                    else
+                    {
+                        <a asp-controller="Administrator" asp-action="NotificationById" asp-route-id="@Model.Id">
+                            @Model.Title
+                        </a>
+                    }
+                </h5>
+            </div>
+            <p class="card-text">
+                @Html.Raw(Model.Content)
+            </p>
+
+            <div class="row">
+                <div class="col-md-6">От кого: <i>@Model.AddressFrom</i></div>
+                <div class="col-md-6">Кому: <i>@Model.AddressTo</i></div>
+            </div>
+        </div>
+    </div>
+    @if (canSend)
+    {
+        <div class="mt-3">
+            <a class="btn btn-outline-primary"
+               asp-controller="Administrator"
+               asp-action="SendNotification"
+               asp-route-subject="@("RE: " + Model.Title)"
+               asp-route-mailTo="@Model.AddressFrom">
+               Отправить ответ
+            </a>
+            <a class="btn btn-outline-secondary" asp-controller="Administrator" asp-action="Notifications">Список сообщений</a>
+        </div>
+    }
+}
+else
+{
+    <p class="alert alert-warning">Empty</p>
+}

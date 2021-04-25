@@ -1,0 +1,47 @@
+﻿@model Calabonga.OperationResults.OperationResult<Calabonga.UnitOfWork.IPagedList<Calabonga.Facts.Web.ViewModels.NotificationViewModel>>
+
+@{
+    // Calabonga: WHAT I DID (2021-04-25 10:37 Notifications)
+    Layout = "_LayoutColumn";
+    ViewData["Title"] = "Список сообщений";
+    ViewData["CanSend"] = false;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model is {Ok: true })
+{
+    <div class="text-muted text-end">
+        Всего: @Model.Result.TotalCount
+    </div>
+
+    @if (Model.Result.Items.Any())
+    {
+
+        @foreach (var item in Model.Result.Items)
+        {
+            <partial name="_NotificationView" model="item" view-data="ViewData" />
+        }
+
+        <pager asp-paged-list-page-size="@Model.Result.PageSize"
+               asp-paged-list-page-index="@Model.Result.PageIndex"
+               asp-paged-list-total-pages="@Model.Result.TotalPages"
+               asp-paged-list-url="notifications"
+               asp-route-parameter="id"></pager>
+    }
+    else
+    {
+        <p class="alert alert-warning">
+            Нет данных
+        </p>
+    }
+}
+
+@section Column
+{
+    <div class="list-group">
+        <a asp-controller="Administrator" asp-action="Notifications" asp-route-notPrecessedOnly="false" class="list-group-item">В обработке</a>
+        <a asp-controller="Administrator" asp-action="Notifications" asp-route-notPrecessedOnly="true" class="list-group-item">Отправленные</a>
+        <a asp-controller="Administrator" asp-action="SendNotification" class="list-group-item">Отправить новое</a>
+    </div>
+}
