@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Calabonga.Facts.Web.Controllers.Administrator.Queries
 {
-    // Calabonga: WHAT I DID (2021-04-25 10:32 NotificationGetById)
     public class NotificationGetByIdRequest : RequestBase<NotificationViewModel?>
     {
         public NotificationGetByIdRequest(Guid id) => Id = id;

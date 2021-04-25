@@ -26,7 +26,6 @@ namespace Calabonga.Facts.Web.Controllers.Administrator
             return View(model);
         }
 
-        // Calabonga: WHAT I DID (2021-04-25 10:34 AdministratorController)
         [HttpPost]
         [ActionName(nameof(SendNotification))]
         public async Task<IActionResult> SendNotificationConfirm(ManualNotificationViewModel model)

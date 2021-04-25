@@ -1,4 +1,5 @@
-﻿@model Calabonga.OperationResults.OperationResult<Calabonga.Facts.Web.ViewModels.FactViewModel>
+﻿@using Calabonga.Facts.RazorLibrary
+@model Calabonga.OperationResults.OperationResult<Calabonga.Facts.Web.ViewModels.FactViewModel>
 
 @{
     Layout = "_Layout";
@@ -20,3 +21,10 @@
         }
     </div>
 </div>
+
+<component type="typeof(Component1)" render-mode="ServerPrerendered"/>
+
+@section Scripts
+{
+    <script src="_framework/blazor.server.js"></script>
+}

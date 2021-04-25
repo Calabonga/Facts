@@ -5,7 +5,6 @@ namespace Calabonga.Facts.Web.ViewModels
     /// <summary>
     /// ManualNotification Viewmodel
     /// </summary>
-    // Calabonga: WHAT I DID (2021-04-25 10:36 ManualNotificationViewModel)
     public class ManualNotificationViewModel
     {
         [Required(ErrorMessage = "{0} - обязательное поле")]

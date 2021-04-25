@@ -6,7 +6,6 @@ namespace Calabonga.Facts.Web.ViewModels
     /// <summary>
     /// Notification view model
     /// </summary>
-    // Calabonga: WHAT I DID (2021-04-25 10:36 NotificationViewModel)
     public class NotificationViewModel: Identity
     {
         public string Title { get; set; } = null!;

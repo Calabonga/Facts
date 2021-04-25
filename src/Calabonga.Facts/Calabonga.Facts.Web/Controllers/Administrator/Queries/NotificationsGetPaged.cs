@@ -13,10 +13,8 @@ using System.Threading.Tasks;
 
 namespace Calabonga.Facts.Web.Controllers.Administrator.Queries
 {
-    // Calabonga: WHAT I DID (2021-04-25 10:33 NotificationsGetPaged)
     public class NotificationGetPagedRequest : RequestBase<OperationResult<IPagedList<NotificationViewModel>>>
     {
-
         public NotificationGetPagedRequest(int pageIndex, string search, bool notProcessed)
         {
             Search = search;
@@ -37,9 +35,7 @@ namespace Calabonga.Facts.Web.Controllers.Administrator.Queries
 
         public NotificationGetPagedRequestHandler(
             IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+            => _unitOfWork = unitOfWork;
 
         public override async Task<OperationResult<IPagedList<NotificationViewModel>>> Handle(NotificationGetPagedRequest request, CancellationToken cancellationToken)
         {
@@ -47,13 +43,13 @@ namespace Calabonga.Facts.Web.Controllers.Administrator.Queries
             var predicate = BuildPredicate(request);
 
             var posts = await repository.GetPagedListAsync(
-                selector: NotificationSelectors.Default,
-                predicate: predicate,
-                orderBy: o => o.OrderByDescending(x => x.CreatedAt),
+                NotificationSelectors.Default,
+                predicate,
+                o => o.OrderByDescending(x => x.CreatedAt),
                 pageIndex: request.PageIndex ?? 0,
                 pageSize: 25,
                 cancellationToken: cancellationToken);
-            
+
             return OperationResult.CreateResult(posts);
         }
 

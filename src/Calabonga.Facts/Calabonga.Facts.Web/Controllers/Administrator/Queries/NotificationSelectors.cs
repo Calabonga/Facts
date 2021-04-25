@@ -8,7 +8,6 @@ namespace Calabonga.Facts.Web.Controllers.Administrator.Queries
     /// <summary>
     /// Selectors
     /// </summary>
-    // Calabonga: WHAT I DID (2021-04-25 10:33 NotificationSelectors)
     public static class NotificationSelectors
     {
         /// <summary>
