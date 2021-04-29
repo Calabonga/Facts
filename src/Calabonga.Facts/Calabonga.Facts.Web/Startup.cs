@@ -100,7 +100,12 @@ namespace Calabonga.Facts.Web
 
                 #region disable some pages
 
+                // Get
                 endpoints.MapGet("/Identity/Account/Register", context => Task.Factory.StartNew(() =>
+                    context.Response.Redirect("/Identity/Account/Login?returnUrl=~%2F", true, true)));
+
+                // Post
+                endpoints.MapPost("/Identity/Account/Register", context => Task.Factory.StartNew(() => 
                     context.Response.Redirect("/Identity/Account/Login?returnUrl=~%2F", true, true)));
                 
                 #endregion
