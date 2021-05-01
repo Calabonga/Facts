@@ -1,0 +1,15 @@
+﻿@using Microsoft.JSInterop
+<span @onclick="(_ => CopyToClipboard(LinkValue))" title ="Скопироваться ссылку на факт">Ссылка</span>
+
+@code {
+
+    [Parameter]public string LinkValue { get; set; }
+    [Inject]IJSRuntime JsRuntime { get; set; }
+
+    protected async Task CopyToClipboard(string value)
+    {
+        var interop = new RazorInterop(JsRuntime);
+        await interop.CopyToClipboard(value);
+        await interop.ShowToast(value, "Скопировано!", "success");
+    }
+}
