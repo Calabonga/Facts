@@ -1,8 +1,22 @@
-﻿@{
+﻿@model Calabonga.Facts.Web.ViewModels.FactViewModel
+@{
     ViewData["Title"] = "Слуйчайный факт";
+    ViewData["HideLink"] = true;
 }
 <h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col">
 
-<p class="alert alert-info">
-    Простите, страница в разработке.
-</p>
+        <partial name="_Fact" model="Model" />
+
+    </div>
+</div>
+@section Headers
+{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+}
+@section Scripts
+{
+    <script src="_framework/blazor.server.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+}

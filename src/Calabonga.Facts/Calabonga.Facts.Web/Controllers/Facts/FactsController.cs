@@ -27,7 +27,8 @@ namespace Calabonga.Facts.Web.Controllers.Facts
             return View(operation);
         }
 
-        public IActionResult Random() => View();
+        public async Task<IActionResult> Random() =>
+            View(await _mediator.Send(new FactGetRandomRequest(), HttpContext.RequestAborted));
 
         public async Task<IActionResult> Show(Guid id, string? returnUrl = null)
         {
