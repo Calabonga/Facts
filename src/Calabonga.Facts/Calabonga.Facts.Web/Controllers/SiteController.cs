@@ -37,12 +37,7 @@ namespace Calabonga.Facts.Web.Controllers
             .ToList();
         }
 
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Random() => View();
+        public IActionResult About() => View();
 
         public IActionResult Cloud() => View();
 

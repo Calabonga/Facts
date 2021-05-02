@@ -10,8 +10,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts
     {
         private readonly IMediator _mediator;
 
-        public FactsController(
-            IMediator mediator)
+        public FactsController(IMediator mediator)
             => _mediator = mediator;
 
         public async Task<IActionResult> Index(int? pageIndex, string tag, string search)
@@ -27,6 +26,8 @@ namespace Calabonga.Facts.Web.Controllers.Facts
 
             return View(operation);
         }
+
+        public IActionResult Random() => View();
 
         public async Task<IActionResult> Show(Guid id, string? returnUrl = null)
         {
