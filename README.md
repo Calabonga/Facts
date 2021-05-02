@@ -46,8 +46,8 @@
   * [x] Mediatr: FeedbackNotificationResponse
   * [x] Метод генерирующий картинку (reCapture) 
   * [x] Добавление проверочной картинки (reCapture) на страницу FeedBack
-* [ ] Blazor: Подключаем Toastr через component Blazor
-* [ ] Blazor: Копируем ссылку через component Blazor
+* [x] Blazor: Подключаем Toastr через component Blazor
+* [x] Blazor: Копируем ссылку через component Blazor
 * [x] Администратор: Страница "панель управления" (навигатор управления)
 * [ ] Администратор: Страница "добавление факта"
    * [ ] Blazor: Используем component Blazor для поиска по ключу уже существующих фактов
@@ -59,7 +59,7 @@
 * [x] Администратор: Реализация постраничного просмотра списка сообщений (Notification)
 * [x] Администратор: Страница "отправки почтового сообщения"
 * [ ] HostedService: Сработка по расписанию (Cron)
-  * [ ] Отправка почты. Создание IEmailService
+  * [ ] Отправка почты. Создание IEmailService.
   * [ ] INotificationProvider обработчик Notification, отправка сообщений и обновление статуса отправки
   * [ ] Реализация BackgroundWorker для отправки почтовых писем из таблицы Notification
 
