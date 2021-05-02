@@ -21,16 +21,15 @@ namespace Calabonga.Facts.Web.Controllers
 {
     public class SiteController : Controller
     {
-        private readonly IJSRuntime _jsRuntime;
         private readonly IMediator _mediator;
         private readonly IWebHostEnvironment _environment;
         private readonly List<SelectListItem> _subjects;
+
         public SiteController(
             IJSRuntime jsRuntime,
             IMediator mediator,
             IWebHostEnvironment environment)
         {
-            _jsRuntime = jsRuntime;
             _mediator = mediator;
             _environment = environment;
             _subjects = new List<string> { "Связь с разработчиком", "Жалоба", "Предложение", "Другое" }.Select(x => new SelectListItem { Value = x, Text = x })
@@ -39,9 +38,6 @@ namespace Calabonga.Facts.Web.Controllers
 
         public async Task<IActionResult> About()
         {
-            var interop = new RazorInterop(_jsRuntime);
-            await interop.ShowToast("test", "title");
-
             return View();
         }
 

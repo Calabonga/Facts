@@ -28,11 +28,11 @@ namespace Calabonga.Facts.Web.Data
                 return;
             }
 
-            await context.Database.MigrateAsync();
+            await context!.Database.MigrateAsync();
 
             var userManager = scope.ServiceProvider.GetService<UserManager<IdentityUser>>();
             var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
-            var roles = AppData.Roles.ToArray();           
+            var roles = AppData.Roles.ToArray();
             IdentityResult identityResult;
 
             if (userManager == null || roleManager == null)
@@ -55,7 +55,7 @@ namespace Calabonga.Facts.Web.Data
                 UserName = username,
                 Email = username,
                 EmailConfirmed = true,
-                PhoneNumber = phone,                
+                PhoneNumber = phone,
                 PhoneNumberConfirmed = true
             };
 

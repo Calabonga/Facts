@@ -14,7 +14,7 @@ namespace Calabonga.Facts.Web.Infrastructure.Mappers.Base
             var profiles = GetProfiles();
             return new MapperConfiguration(cfg =>
             {
-                foreach (var profile in profiles.Select(profile => (Profile)Activator.CreateInstance(profile)))
+                foreach (var profile in profiles.Select(profile => (Profile)Activator.CreateInstance(profile)!))
                 {
                     cfg.AddProfile(profile);
                 }

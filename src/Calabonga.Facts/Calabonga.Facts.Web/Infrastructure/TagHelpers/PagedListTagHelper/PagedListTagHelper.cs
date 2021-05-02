@@ -33,7 +33,7 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
         private const string PagedListRouteDataAttributeName = "asp-route-data";
         private const string ProtocolAttributeName = "asp-protocol";
         private const string ControllerAttributeName = "asp-controller";
-        
+
         public PagedListTagHelper(IPagerTagHelperService tagHelperService, IHtmlGenerator htmlGenerator)
         {
             _tagHelperService = tagHelperService;
@@ -56,7 +56,7 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
         #endregion
 
         #region Properties for Private calculation
-        
+
         private string DisableCss => "disabled";
 
         private string PageLinkCss => "page-link";
@@ -74,13 +74,13 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
         #region Properties for Generator
 
         [ViewContext]
-        public ViewContext ViewContext { get; set; }
+        public ViewContext? ViewContext { get; set; }
 
         [HtmlAttributeName(PagerListActionAttributeName)]
-        public string ActionName { get; set; }
+        public string? ActionName { get; set; }
 
         [HtmlAttributeName(PagedListRouteAttributeName)]
-        public string RouteParameter { get; set; }
+        public string RouteParameter { get; set; } = null!;
 
         [HtmlAttributeName(PagedListRouteDataAttributeName)]
         public object? RouteParameters { get; set; }
@@ -89,26 +89,26 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
         /// The URL fragment name.
         /// </summary>
         [HtmlAttributeName(FragmentAttributeName)]
-        public string Fragment { get; set; }
+        public string? Fragment { get; set; }
 
         /// <summary>
         /// The protocol for the URL, such as &quot;http&quot; or &quot;https&quot;.
         /// </summary>
         [HtmlAttributeName(ProtocolAttributeName)]
-        public string Protocol { get; set; }
+        public string? Protocol { get; set; }
 
         /// <summary>
         /// The host name.
         /// </summary>
         [HtmlAttributeName(HostAttributeName)]
-        public string Host { get; set; }
+        public string? Host { get; set; }
 
         /// <summary>
         /// The name of the controller.
         /// </summary>
         /// <remarks>Must be <c>null</c> if <see cref="Route"/> is non-<c>null</c>.</remarks>
         [HtmlAttributeName(ControllerAttributeName)]
-        public string Controller { get; set; }
+        public string Controller { get; set; } = null!;
 
         #endregion
 
@@ -120,14 +120,14 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
         /// <param name="output">A stateful HTML element used to generate an HTML tag.</param>
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (PagedListTotalCount<=1)
+            if (PagedListTotalCount <= 1)
             {
                 return;
             }
-            
+
             var ul = new TagBuilder("ul");
             ul.AddCssClass(RootTagCss);
-            
+
             var pagerContext = _tagHelperService.GetPagerContext(PagedListIndex, PagedListSize, PagedListTotalCount, VisibleGroupCount);
             var pages = _tagHelperService.GetPages(pagerContext);
 
@@ -135,7 +135,7 @@ namespace Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper
             {
                 var li = new TagBuilder("li");
                 li.AddCssClass(PageItemCss);
-              
+
                 if (page.IsActive)
                 {
                     li.AddCssClass(ActiveTagCss);
