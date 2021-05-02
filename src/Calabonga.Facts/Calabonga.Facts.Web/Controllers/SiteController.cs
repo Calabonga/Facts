@@ -32,11 +32,12 @@ namespace Calabonga.Facts.Web.Controllers
         {
             _mediator = mediator;
             _environment = environment;
-            _subjects = new List<string> { "Связь с разработчиком", "Жалоба", "Предложение", "Другое" }.Select(x => new SelectListItem { Value = x, Text = x })
-                .ToList();
+            _subjects = new List<string> { "Связь с разработчиком", "Жалоба", "Предложение", "Другое" }
+            .Select(x => new SelectListItem { Value = x, Text = x })
+            .ToList();
         }
 
-        public async Task<IActionResult> About()
+        public IActionResult About()
         {
             return View();
         }

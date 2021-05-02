@@ -77,7 +77,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 
             if (!string.IsNullOrWhiteSpace(request.Tag))
             {
-                predicate = predicate.And(x => x.Tags.Select(t => t.Name).Contains(request.Tag));
+                predicate = predicate.And(x => x.Tags!.Select(t => t.Name).Contains(request.Tag));
             }
 
             return predicate;
