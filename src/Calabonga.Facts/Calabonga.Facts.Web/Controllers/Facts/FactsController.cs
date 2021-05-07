@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Calabonga.Facts.Web.Controllers.Facts.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +26,9 @@ namespace Calabonga.Facts.Web.Controllers.Facts
 
             return View(operation);
         }
+
+        public async Task<IActionResult> Rss() =>
+            Content(await _mediator.Send(new FactGetRssRequest(), HttpContext.RequestAborted));
 
         public async Task<IActionResult> Random() =>
             View(await _mediator.Send(new FactGetRandomRequest(), HttpContext.RequestAborted));

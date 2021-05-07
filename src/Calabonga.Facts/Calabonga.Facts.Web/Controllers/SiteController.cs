@@ -1,4 +1,4 @@
-using Calabonga.Facts.RazorLibrary;
+﻿using Calabonga.Facts.RazorLibrary;
 using Calabonga.Facts.Web.Mediatr;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -91,8 +91,6 @@ namespace Calabonga.Facts.Web.Controllers
 
             return View();
         }
-
-        public IActionResult Rss() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

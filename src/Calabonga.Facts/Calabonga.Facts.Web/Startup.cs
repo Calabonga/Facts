@@ -1,5 +1,6 @@
-using Calabonga.AspNetCore.Controllers.Extensions;
+﻿using Calabonga.AspNetCore.Controllers.Extensions;
 using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Infrastructure.Services;
 using Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper;
 using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
@@ -50,6 +51,7 @@ namespace Calabonga.Facts.Web
 
             // dependency injection
             services.AddTransient<IPagerTagHelperService, PagerTagHelperService>();
+            services.AddTransient<IFactService, FactService>();
 
             services.AddServerSideBlazor();
         }
