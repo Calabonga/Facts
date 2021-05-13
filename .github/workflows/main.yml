@@ -1,0 +1,56 @@
+name: .NET CI/CD WebDeploy IIS
+
+on:
+  push:
+    branches: [ NOT_WORKER_YET ]
+
+jobs:
+
+  Build-Test-Deploy:
+    runs-on: windows-latest
+    env:
+      NET_VERSION: '5.0.102'
+      PROJECT_DIRECTORY_PATH: "src/Calabonga.Facts"
+      PROJECT_DIRECTORY_WEB_PATH: 'Calabonga.Facts.Web'
+      PROJECT_NAME: 'Calabonga.Facts'
+      IIS_WEBSITE_NAME: ${{ secrets.IIS_WEBSITE_NAME }}
+      IIS_SERVER_USERNAME: ${{ secrets.IIS_SERVER_USERNAME }}
+      IIS_SERVER_COMPUTER_NAME: ${{ secrets.IIS_SERVER_COMPUTER_NAME }}
+      IIS_SERVER_PASSWORD: ${{ secrets.IIS_SERVER_PASSWORD }}
+      RECYCLE_APP_NAME: ${{ secrets.RECYCLE_APP_NAME }}
+      WEBSITE_CONTENT_PATH: ${{ secrets.WEBSITE_CONTENT_PATH }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET ${{ env.NET_VERSION }}
+      uses: actions/checkout@v2.3.2
+      with:
+        dotnet-version: ${{ env.NET_VERSION }}
+        
+    - name: Restore dependencies
+      run: dotnet restore ${{env.PROJECT_DIRECTORY_PATH}}/${{env.PROJECT_NAME}}.sln
+
+    - name: Build
+      run: dotnet build 
+        ${{env.PROJECT_DIRECTORY_PATH}}/${{env.PROJECT_NAME}}.sln 
+        --configuration Release 
+        --source https://api.nuget.org/v3/index.json
+        
+    - name: Test with dotnet
+      run: dotnet test 
+        ${{env.PROJECT_DIRECTORY_PATH}}/${{env.PROJECT_NAME}}.sln 
+        --configuration Release 
+        --no-build
+    
+    - name: Stop Application Pool
+      shell: cmd
+      run: '"C:/Program Files (x86)/IIS/Microsoft Web Deploy V3/msdeploy.exe" -verb:sync -allowUntrusted -source:recycleApp -dest:recycleApp="${{ env.RECYCLE_APP_NAME }}",recycleMode="StopAppPool",computerName="${{ env.IIS_WEBSITE_NAME }}/msdeploy.axd?site=${{ env.IIS_WEBSITE_NAME }}",username="${{ env.IIS_SERVER_USERNAME }}",password="${{ env.IIS_SERVER_PASSWORD }}",AuthType="Basic"'
+    
+    - name: Deploy Application
+      shell: cmd
+      run: '"C:/Program Files (x86)/IIS/Microsoft Web Deploy V3/msdeploy.exe" -verb:sync -allowUntrusted -source:contentPath="%CD%\${{ env.PROJECT_DIRECTORY_PATH }}/${{env.PROJECT_DIRECTORY_WEB_PATH}}\bin\Release\net5.0\" -dest:auto,computerName="${{ env.IIS_WEBSITE_NAME }}/msdeploy.axd?site=${{ env.IIS_WEBSITE_NAME }}",username="${{ env.IIS_SERVER_USERNAME }}",password="${{ env.IIS_SERVER_PASSWORD }}",authtype="Basic"'
+    
+    - name: Start Application Pool
+      shell: cmd
+      run: '"C:/Program Files (x86)/IIS/Microsoft Web Deploy V3/msdeploy.exe" -verb:sync -allowUntrusted -source:recycleApp -dest:recycleApp="${{ env.RECYCLE_APP_NAME }}",recycleMode="StartAppPool",computerName="${{ env.IIS_WEBSITE_NAME }}/msdeploy.axd?site=${{ env.IIS_WEBSITE_NAME }}",username="${{ env.IIS_SERVER_USERNAME }}",password="${{ env.IIS_SERVER_PASSWORD }}",AuthType="Basic"' 
