@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Calabonga.Facts.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <base href="~/"/>
+    <base href="~/" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="Shortcut Icon" href="~/favicon.ico" />
     @await RenderSectionAsync("Headers", required: false)
@@ -51,10 +51,19 @@
                     <a class="nav-link" asp-controller="Facts" asp-action="Rss">RSS-канал фактов</a>
                 </li>
             </ul>
-
-            <p class="small text-center">
+            <div class="small text-center mt-4">
                 &copy; 2021 - <a class="link-secondary" style="text-decoration: none" href="https://www.calabonga.net">Calabonga SOFT</a>
-            </p>
+            </div>
+            <environment exclude="Development">
+                <div class="text-center">
+                    <partial name="_Counters" />
+                </div>
+            </environment>
+            <environment include="Development">
+                <div class="small text-center">
+                    [COUNTERS]
+                </div>
+            </environment>
         </footer>
     </div>
 
