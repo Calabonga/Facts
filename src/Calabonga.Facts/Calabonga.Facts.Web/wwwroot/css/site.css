@@ -70,3 +70,53 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+/*---- tags size ----*/
+.cloud > a {
+    padding: 5px;
+    line-height: 2.1em;
+    vertical-align: middle;
+}
+
+a.tag0, a.tag1, a.tag2, a.tag3, a.tag4, a.tag5, a.tag6, a.tag7, a.tag8, a.tag9 {
+    text-decoration: none;
+}
+
+a.tag0 {
+    font-size: 1.1em;
+}
+
+a.tag1 {
+    font-size: 1.3em;
+}
+
+a.tag2 {
+    font-size: 1.5em;
+}
+
+a.tag3 {
+    font-size: 1.7em;
+}
+
+a.tag4 {
+    font-size: 1.9em;
+}
+
+a.tag5 {
+    font-size: 2.1em;
+}
+
+a.tag6 {
+    font-size: 2.3em;
+}
+
+a.tag7 {
+    font-size: 2.5em;
+}
+
+a.tag8 {
+    font-size: 2.7em;
+}
+
+a.tag9 {
+    font-size: 2.9em;
+}

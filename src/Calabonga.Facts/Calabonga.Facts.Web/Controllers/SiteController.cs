@@ -38,9 +38,7 @@ namespace Calabonga.Facts.Web.Controllers
         }
 
         public IActionResult About() => View();
-
-        public IActionResult Cloud() => View();
-
+        
         public IActionResult Feedback()
         {
             ViewData["Subjects"] = _subjects;
