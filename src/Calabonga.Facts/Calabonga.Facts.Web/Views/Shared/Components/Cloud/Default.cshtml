@@ -1,0 +1,13 @@
+﻿@model List<Calabonga.Facts.Web.ViewModels.TagCloud>
+
+@if (Model != null && Model.Any())
+{
+    <div class="mb-5 text-center">
+        @foreach (var item in Model)
+        {
+            <a class="@item.CssClass badge bg-light text-dark my-2" href="@Url.Action("Index","Facts", new {tag = item.Name})" title="@item.Total">
+                @item.Name
+            </a>
+        }
+    </div>
+}
