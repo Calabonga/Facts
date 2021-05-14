@@ -101,7 +101,6 @@ namespace Calabonga.Facts.Web
 
                 endpoints.MapBlazorHub();
 
-
                 #region disable some pages
 
                 // Get
