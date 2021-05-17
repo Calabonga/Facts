@@ -1,0 +1,7 @@
+﻿@using Calabonga.Facts.Web.Extensions
+@using Calabonga.Facts.Web.Infrastructure
+@model Guid
+@if (User?.Identity?.IsAuthenticated == true && User.IsInRole(AppData.AdministratorRoleName))
+{
+    <a asp-controller="Facts" asp-action="Edit" asp-route-id="@Model" asp-route-returnUrl="@Context.GetReturnUrl()#@Model">Изменить</a>
+}

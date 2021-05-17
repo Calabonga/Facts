@@ -1,4 +1,4 @@
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using System;
 using System.Threading.Tasks;
 
@@ -20,6 +20,12 @@ namespace Calabonga.Facts.RazorLibrary
                 jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Calabonga.Facts.RazorLibrary/razorLibrary.js")
                     .AsTask());
 
+        public async ValueTask SetTagTotal(int value)
+        {
+            var module = await _moduleTask.Value;
+            await module.InvokeVoidAsync("setTagsTotal", "TotalTags", value);
+        }   
+        
         public async ValueTask<string> ShowToast(string message, string title, string type = "info")
         {
             var module = await _moduleTask.Value;

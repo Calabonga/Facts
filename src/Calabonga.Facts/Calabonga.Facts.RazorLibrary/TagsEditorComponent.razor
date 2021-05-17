@@ -1,0 +1,32 @@
+﻿@inherits TagsEditorComponentModel
+
+
+<div class="mb-3">
+    <label asp-for="Tags"></label>
+    @for (int i = 0; i < Tags.Count; i++)
+    {
+        <input name="Tags[@i]" value="@Tags[i]" type="hidden" />
+    }
+
+    <div class="row">
+        <div class="col-md-8">
+            @if (Tags != null && Tags.Any())
+            {
+                foreach (var tag in Tags)
+                {
+                    <span class="btn btn-outline-secondary me-1 mb-1" @onclick="@(()=>DeleteTag(tag))">
+                        @tag
+                        <i class="fa fa-times"></i>
+                    </span>
+                }
+            }
+        </div>
+        <div class="col-md-3">
+
+        </div>
+
+    </div>
+
+
+
+</div>
