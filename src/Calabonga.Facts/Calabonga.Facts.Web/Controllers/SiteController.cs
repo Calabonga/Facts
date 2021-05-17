@@ -6,7 +6,6 @@ using Calabonga.Facts.Web.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,7 +25,6 @@ namespace Calabonga.Facts.Web.Controllers
         private readonly List<SelectListItem> _subjects;
 
         public SiteController(
-            IJSRuntime jsRuntime,
             IMediator mediator,
             IWebHostEnvironment environment)
         {

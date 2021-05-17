@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Calabonga.Facts.Web.Controllers.Facts.Queries;
-using Calabonga.Facts.Web.Infrastructure.Services;
+using Calabonga.Facts.Web.Infrastructure;
+using Calabonga.Facts.Web.ViewModels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -9,16 +11,9 @@ namespace Calabonga.Facts.Web.Controllers.Facts
 {
     public class FactsController : Controller
     {
-        private readonly ITagService _tagService;
         private readonly IMediator _mediator;
 
-        public FactsController(
-            ITagService tagService,
-            IMediator mediator)
-        {
-            _tagService = tagService;
-            _mediator = mediator;
-        }
+        public FactsController(IMediator mediator) => _mediator = mediator;
 
         public async Task<IActionResult> Index(int? pageIndex, string tag, string search)
         {
@@ -28,10 +23,34 @@ namespace Calabonga.Facts.Web.Controllers.Facts
             var operation = await _mediator.Send(new FactGetPagedRequest(index, tag, search), HttpContext.RequestAborted);
             if (operation.Ok && operation.Result.TotalPages < index)
             {
-                return RedirectToAction(nameof(Index), new {tag, search, pageIndex = 1});
+                return RedirectToAction(nameof(Index), new { tag, search, pageIndex = 1 });
             }
 
             return View(operation);
+        }
+
+        [Authorize(Roles = AppData.AdministratorRoleName)]
+        public async Task<IActionResult> Edit(Guid id, string returnUrl)
+        {
+            var operationResult = await _mediator.Send(new FactGetByIdForEditRequest(id, returnUrl));
+            if (operationResult.Ok)
+            {
+                return View(operationResult.Result);
+            }
+
+            return RedirectToAction("Error", "Site", new { code = 404 });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = AppData.AdministratorRoleName)]
+        public async Task<IActionResult> Edit(FactEditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return Redirect(model.ReturnUrl);
         }
 
         public IActionResult Cloud() => View();

@@ -43,4 +43,8 @@
     <ProjectReference Include="..\Calabonga.Facts.RazorLibrary\Calabonga.Facts.RazorLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\Helpers\" />
+  </ItemGroup>
+
 </Project>
