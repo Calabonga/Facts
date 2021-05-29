@@ -1,4 +1,5 @@
 ﻿using Calabonga.AspNetCore.Controllers.Extensions;
+using Calabonga.Facts.Contracts;
 using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.Infrastructure.Services;
 using Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper;
@@ -51,6 +52,7 @@ namespace Calabonga.Facts.Web
 
             // dependency injection
             services.AddTransient<IPagerTagHelperService, PagerTagHelperService>();
+            services.AddTransient<ITagSearchService, TagSearchService>();
             services.AddTransient<IFactService, FactService>();
             services.AddTransient<ITagService, TagService>();
             services.AddResponseCaching();

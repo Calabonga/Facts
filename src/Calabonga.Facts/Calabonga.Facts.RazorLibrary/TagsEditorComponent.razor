@@ -1,32 +1,58 @@
 ﻿@inherits TagsEditorComponentModel
 
-
-<div class="mb-3">
+<div class="row">
     <label asp-for="Tags"></label>
     @for (int i = 0; i < Tags.Count; i++)
     {
         <input name="Tags[@i]" value="@Tags[i]" type="hidden" />
     }
 
-    <div class="row">
-        <div class="col-md-8">
+    <div class="col-md-8 mb-3">
+        <label for="_tag" class="form-label">Метки для факта</label>
+        <div>
             @if (Tags != null && Tags.Any())
             {
                 foreach (var tag in Tags)
                 {
-                    <span class="btn btn-outline-secondary me-1 mb-1" @onclick="@(()=>DeleteTag(tag))">
+                    <span class="btn btn-outline-secondary me-1 mb-1" @onclick="@(() => DeleteTag(tag))">
                         @tag
                         <i class="fa fa-times"></i>
                     </span>
                 }
             }
         </div>
-        <div class="col-md-3">
-
+    </div>
+    <div class="col-4">
+        @if (Tags != null)
+        {
+            for (int i = 0; i < Tags.Count; i++)
+            {
+                <input name="Tags[@i]" value="@Tags[i]" type="hidden" />
+            }
+        }
+        <label for="_tag1" class="form-label">Добавить метку (tag)</label>
+        <div class="input-group mb-3">
+            <input id="_tag1"
+                   class="form-control"
+                   autocomplete="off"
+                   @bind="TagName"
+                   @oninput="SearchTags" />
+            <button type="button" class="btn btn-sm btn-outline-secondary" @onclick="()=>AddTag(TagName)">+</button>
+        </div>
+        <div class="mb-3">
+            @if (Founded != null && Founded.Any())
+            {
+                foreach (var tag in Founded)
+                {
+                    <div class="badge rounded-pill bg-info">
+                        <span style="cursor: pointer" @onclick="()=>AddTag(tag)">
+                            @tag
+                        </span>
+                    </div>
+                }
+            }
         </div>
 
     </div>
-
-
 
 </div>

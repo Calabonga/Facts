@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Calabonga.Facts.Contracts\Calabonga.Facts.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

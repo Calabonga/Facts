@@ -20,7 +20,6 @@ namespace Calabonga.Facts.Web.ViewModels
         public List<string> Tags { get; set; }
 
         [Range(1, 8, ErrorMessage = "Требуется от 1 до 8 меток")]
-        [Display(Name = "Метки для факта")]
         public int TotalTags { get; set; }
     }
 }
