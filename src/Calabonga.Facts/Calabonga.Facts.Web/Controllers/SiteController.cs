@@ -1,5 +1,4 @@
-﻿using Calabonga.Facts.RazorLibrary;
-using Calabonga.Facts.Web.Mediatr;
+﻿using Calabonga.Facts.Web.Mediatr;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Calabonga.Facts.Web.ViewModels;

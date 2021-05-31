@@ -4,8 +4,14 @@ using System.Linq;
 
 namespace Calabonga.Facts.Web.Infrastructure.Helpers
 {
-    public class TagCloudHelper
+    public class FactHelper
     {
+        /// <summary>
+        /// Generates tags as cloud
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="clusterCount"></param>
+        /// <returns></returns>
         public static List<TagCloud> Generate(List<TagCloud> items, int clusterCount)
         {
             var totalCount = items.Count;
@@ -45,6 +51,20 @@ namespace Calabonga.Facts.Web.Infrastructure.Helpers
             }
 
             return result.OrderBy(x => x.Name).ToList();
+        }
+
+        /// <summary>
+        /// Defines what's need to be created and what's need to be deleted
+        /// </summary>
+        /// <param name="old">tags already pinned to fact</param>
+        /// <param name="current">tags after fact editing</param>
+        /// <returns></returns>
+        public (string[] toCreate, string[] toDelete) FindDifference(string[] old, string[] current)
+        {
+            var mask = current.Intersect(old);
+            var toDelete = old.Except(current).ToArray();
+            var toCreate = current.Except(mask).ToArray();
+            return new(toCreate, toDelete);
         }
     }
 }
