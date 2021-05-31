@@ -1,11 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Calabonga.Facts.Web.Infrastructure;
 
 namespace Calabonga.Facts.Web.ViewModels
 {
-    public class FactCreateViewModel
+    public class FactCreateViewModel : IHaveTags
     {
+        /// <summary>
+        /// Content for editing
+        /// </summary>
+        [Display(Name = "Содержание факта")]
         public string? Content { get; set; }
 
-        public IEnumerable<string>? Tags { get; set; }
+        public List<string>? Tags { get; set; }
+
+        [Range(1, 8, ErrorMessage = "Требуется от 1 до 8 меток")]
+        public int TotalTags { get; set; }
     }
 }

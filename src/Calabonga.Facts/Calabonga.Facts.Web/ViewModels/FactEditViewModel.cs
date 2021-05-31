@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Calabonga.Facts.Web.Infrastructure;
 
 namespace Calabonga.Facts.Web.ViewModels
 {
-    public class FactEditViewModel
+    public class FactEditViewModel: IHaveTags
     {
         public Guid Id { get; set; }
 
@@ -17,7 +18,7 @@ namespace Calabonga.Facts.Web.ViewModels
         public string ReturnUrl { get; set; } = null!;
 
         [Display(Name = "Метки для факта")]
-        public List<string> Tags { get; set; }
+        public List<string>? Tags { get; set; }
 
         [Range(1, 8, ErrorMessage = "Требуется от 1 до 8 меток")]
         public int TotalTags { get; set; }
