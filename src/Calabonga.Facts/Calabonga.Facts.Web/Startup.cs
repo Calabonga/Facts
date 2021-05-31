@@ -52,6 +52,7 @@ namespace Calabonga.Facts.Web
 
             // dependency injection
             services.AddTransient<IPagerTagHelperService, PagerTagHelperService>();
+            services.AddTransient<IVersionInfoService, VersionInfoService>();
             services.AddTransient<ITagSearchService, TagSearchService>();
             services.AddTransient<IFactService, FactService>();
             services.AddTransient<ITagService, TagService>();

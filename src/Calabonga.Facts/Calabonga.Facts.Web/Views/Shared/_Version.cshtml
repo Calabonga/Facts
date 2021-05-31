@@ -1,0 +1,14 @@
+﻿@using Calabonga.Facts.Web.Infrastructure
+@using Calabonga.Facts.Web.Infrastructure.Services
+@inject IVersionInfoService VersionInfoService
+<br />
+v.@VersionInfoService.Version
+
+@if (User.IsInRole(AppData.AdministratorRoleName))
+{
+
+    <text>
+        @VersionInfoService.Branch - @VersionInfoService.Commit
+    </text>
+
+}
