@@ -6,7 +6,7 @@ namespace Calabonga.Facts.Web.Data.Configurations
     public class TagModelConfiguration : IEntityTypeConfiguration<Tag>
     {
         /// <summary>
-        ///     Configures the entity of type <typeparamref name="TEntity" />.
+        ///     Configures the entity of type
         /// </summary>
         /// <param name="builder"> The builder to be used to configure the entity type. </param>
         public void Configure(EntityTypeBuilder<Tag> builder)

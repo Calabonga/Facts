@@ -6,7 +6,6 @@ using Calabonga.EntityFrameworkCore.Entities.Base;
 using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Calabonga.Facts.Web.Data.Base
 {
@@ -16,9 +15,7 @@ namespace Calabonga.Facts.Web.Data.Base
 
         protected DbContextBase(DbContextOptions options)
             : base(options)
-        {
-            SaveChangesResult = new SaveChangesResult();
-        }
+            => SaveChangesResult = new SaveChangesResult();
 
         /// <summary>
         /// Configures the schema needed for the identity framework.
@@ -117,7 +114,7 @@ namespace Calabonga.Facts.Web.Data.Base
         ///     A concurrency violation occurs when an unexpected number of rows are affected during save.
         ///     This is usually because the data in the database has been modified since it was loaded into memory.
         /// </exception>
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
             DbSaveChanges();
             return base.SaveChangesAsync(cancellationToken);
@@ -154,12 +151,12 @@ namespace Calabonga.Facts.Web.Data.Base
         ///     A concurrency violation occurs when an unexpected number of rows are affected during save.
         ///     This is usually because the data in the database has been modified since it was loaded into memory.
         /// </exception>
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new CancellationToken())
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = new())
         {
             DbSaveChanges();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
-        
+
         private void DbSaveChanges()
         {
             // Added
@@ -207,7 +204,6 @@ namespace Calabonga.Facts.Web.Data.Base
                 }
 
                 SaveChangesResult.AddMessage("Some entities were created");
-
             }
 
             // Modified

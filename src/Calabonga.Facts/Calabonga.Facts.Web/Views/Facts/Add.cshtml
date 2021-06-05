@@ -1,18 +1,16 @@
 ﻿@using Calabonga.Facts.RazorLibrary
-@model Calabonga.Facts.Web.ViewModels.FactEditViewModel
+@model Calabonga.Facts.Web.ViewModels.FactCreateViewModel
 @{
-    ViewData["Title"] = "Редактирование факта";
+    ViewData["Title"] = "Создание факта";
 }
 <div class="row">
     <div class="col">
 
         @if (Model is not null)
         {
-            <form id="fact-editor" asp-action="Edit" asp-controller="Facts" Method="post" asp-antiforgery="true" asp-route-returnurl="@Model.ReturnUrl">
+            <form id="fact-editor" asp-action="Add" asp-controller="Facts" Method="post" asp-antiforgery="true">
 
-                <input type="hidden" asp-for="@Model.Id" />
                 <input asp-for="TotalTags" type="hidden" value="@Model.Tags?.Count" />
-                <input type="hidden" asp-for="@Model.ReturnUrl" />
 
                 @if (ViewData["Error"] != null)
                 {
@@ -21,7 +19,6 @@
 
                 <div class="mb-3">
                     <h2>@ViewData["Title"]</h2>
-                    <small class="text-muted">@Model.Id</small>
                 </div>
 
                 <div class="mb-3">
@@ -37,12 +34,12 @@
                                param-Tags="@Model.Tags" />
                     <br />
                     <span asp-validation-for="TotalTags" class="text-danger"></span>
-                } 
+                }
 
                 <div class="my-5">
                     <button type="submit" class="btn btn-outline-primary">Сохранить</button>
-                    <a class="btn btn-outline-secondary" href="@Url.Content(Model.ReturnUrl)">Отмена</a>
                 </div>
+                
                 <div asp-validation-summary="All" class="text-danger"></div>
 
             </form>
