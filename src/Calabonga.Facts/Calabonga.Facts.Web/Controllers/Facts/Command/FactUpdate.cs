@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.Infrastructure;
+using Calabonga.Facts.Web.Infrastructure.Helpers;
 using Calabonga.Facts.Web.Infrastructure.Services;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.UnitOfWork;
