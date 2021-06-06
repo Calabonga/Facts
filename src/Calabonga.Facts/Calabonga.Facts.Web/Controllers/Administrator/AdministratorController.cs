@@ -1,4 +1,4 @@
-using Calabonga.Facts.Web.Controllers.Administrator.Queries;
+﻿using Calabonga.Facts.Web.Controllers.Administrator.Queries;
 using Calabonga.Facts.Web.Mediatr;
 using Calabonga.Facts.Web.ViewModels;
 using MediatR;
@@ -17,8 +17,6 @@ namespace Calabonga.Facts.Web.Controllers.Administrator
         public AdministratorController(IMediator mediator) => _mediator = mediator;
 
         public IActionResult Index() => View();
-        
-        public IActionResult Add() => View();
 
         public IActionResult SendNotification(string subject, string mailTo, string addressFrom = "robot@calabonga.net")
         {
