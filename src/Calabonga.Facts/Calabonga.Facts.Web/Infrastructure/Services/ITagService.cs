@@ -75,6 +75,8 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
                 throw new ArgumentNullException(nameof(fact));
             }
 
+            fact.Tags ??= new Collection<Tag>();
+
             var tagRepository = _unitOfWork.GetRepository<Tag>();
 
             var afterEdit = viewModel.Tags!.ToArray();
@@ -97,6 +99,8 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
                         continue;
                     }
 
+                    fact.Tags!.Remove(tag);
+
                     var used = _unitOfWork.GetRepository<Fact>()
                                           .GetAll(x => x.Tags!.Select(t => t.Name).Contains(tag.Name), true)
                                           .ToArray();
@@ -107,8 +111,8 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
                     }
                 }
             }
-
-            fact.Tags ??= new Collection<Tag>();
+           
+            
 
             foreach (var name in toCreate)
             {

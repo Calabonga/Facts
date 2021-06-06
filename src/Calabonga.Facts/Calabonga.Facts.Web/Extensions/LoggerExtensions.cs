@@ -6,8 +6,9 @@ namespace Calabonga.Facts.Web.Extensions
 {
     static class EventIdentifiers
     {
-        public static readonly EventId DatabaseSavingErrorId = new(70040001, "DatabaseSavingError");
-        public static readonly EventId NotificationAddedId = new(70040002, "NotificationAdded");
+        public static readonly EventId DatabaseSavingErrorId   = new(70040001, "DatabaseSavingError");
+        public static readonly EventId NotificationAddedId     = new(70040002, "NotificationAdded");
+        public static readonly EventId NotificationProcessedId = new(70040003, "NotificationProcessed");
     }
 
     /// <summary>
@@ -15,6 +16,17 @@ namespace Calabonga.Facts.Web.Extensions
     /// </summary>
     public static class LoggerExtensions
     {
+
+        /// <summary>
+        /// Logger extension for event NotificationProcessed
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="message"></param>
+        public static void NotificationProcessed(this ILogger source, string message) => NotificationProcessedExecute(source, message, null);
+
+        private static readonly Action<ILogger, string, Exception?> NotificationProcessedExecute =
+            LoggerMessage.Define<string>(LogLevel.Information, EventIdentifiers.NotificationProcessedId, "Processing for notification started {message}");
+
         /// <summary>
         /// Logger extension for event NotificationAdded
         /// </summary>

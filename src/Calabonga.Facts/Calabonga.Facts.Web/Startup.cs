@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
+using Calabonga.Facts.Web.Infrastructure.HostedServices;
+using Calabonga.Facts.Web.Infrastructure.Providers;
 
 namespace Calabonga.Facts.Web
 {
@@ -52,12 +54,17 @@ namespace Calabonga.Facts.Web
 
             // dependency injection
             services.AddTransient<IPagerTagHelperService, PagerTagHelperService>();
+            services.AddTransient<INotificationProvider, NotificationProvider>();
             services.AddTransient<IVersionInfoService, VersionInfoService>();
             services.AddTransient<ITagSearchService, TagSearchService>();
             services.AddTransient<IFactService, FactService>();
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ITagService, TagService>();
             services.AddResponseCaching();
             services.AddServerSideBlazor();
+
+            // hosted services
+            services.AddHostedService<NotificationHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

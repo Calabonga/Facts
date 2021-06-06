@@ -19,7 +19,9 @@ namespace Calabonga.Facts.Web.Infrastructure.Mappers
                 .ForMember(x => x.UpdatedAt, o => o.Ignore())
                 .ForMember(x => x.UpdatedBy, o => o.Ignore());
 
-            CreateMap<Fact, FactEditViewModel>();
+            CreateMap<Fact, FactEditViewModel>()
+                .ForMember(x => x.ReturnUrl, o => o.Ignore())
+                .ForMember(x => x.TotalTags, o => o.MapFrom(x => x.Tags == null ? 0 : x.Tags.Count));
 
             CreateMap<FactEditViewModel, Fact>()
                 .ForMember(x => x.Id, o => o.Ignore())

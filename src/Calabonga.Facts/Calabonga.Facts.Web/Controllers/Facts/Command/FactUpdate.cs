@@ -6,8 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.Facts.Web.Data;
-using Calabonga.Facts.Web.Infrastructure;
-using Calabonga.Facts.Web.Infrastructure.Helpers;
 using Calabonga.Facts.Web.Infrastructure.Services;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.UnitOfWork;
@@ -50,7 +48,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Command
             var repository = _unitOfWork.GetRepository<Fact>();
             var fact = await repository.GetFirstOrDefaultAsync(
                 predicate: x => x.Id == request.Model.Id,
-                include: i=>i.Include(x=>x.Tags),
+                include: i => i.Include(x => x.Tags),
                 disableTracking: false);
 
             if (fact is null)
