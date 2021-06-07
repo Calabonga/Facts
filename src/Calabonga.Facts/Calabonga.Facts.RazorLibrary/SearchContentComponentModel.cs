@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Calabonga.Facts.Contracts;
 using Microsoft.AspNetCore.Components;
 
@@ -8,6 +11,8 @@ namespace Calabonga.Facts.RazorLibrary
     {
         protected List<FactViewModel> Founded { get; set; }
 
+        protected string InputStatusClass { get; set; }
+
         [Inject] private ISearchService SearchService { get; set; }
 
         protected void SearchContent(ChangeEventArgs args)
@@ -16,18 +21,34 @@ namespace Calabonga.Facts.RazorLibrary
             if (args?.Value is null)
             {
                 Founded = null;
+                InputStatusClass = null;
                 return;
             }
 
             if (string.IsNullOrEmpty(args.Value.ToString()))
             {
                 Founded = null;
+                InputStatusClass = null;
                 return;
             }
 
-            if (args.Value!.ToString()!.Length > 3)
+            Founded = SearchService.SearchContent(args.Value.ToString());
+
+            if (Founded.Any())
             {
-                Founded = SearchService.SearchContent(args.Value.ToString());
+                Parallel.ForEach(Founded, x => ReplaceTerm(x, args.Value!.ToString()));
+            }
+
+            InputStatusClass = Founded?.Count == 0 ? "is-valid" : "is-invalid";
+        }
+
+        private void ReplaceTerm(FactViewModel fact, string term)
+        {
+            var regex = new Regex(term, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            var value = fact.Content;
+            if (regex.IsMatch(value))
+            {
+                fact.Content = regex.Replace(value, "<strong><mark>" + term + "</mark></strong>");
             }
         }
     }
