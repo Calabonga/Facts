@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col">
                         <p class="lead">
-                            @item.Content
+                            @((MarkupString)item.Content)
                         </p>
                         <p>
                             @foreach (var tag in item.Tags)

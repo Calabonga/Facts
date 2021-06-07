@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Calabonga.Facts.Contracts;
 using Microsoft.AspNetCore.Components;
 
@@ -25,9 +28,21 @@ namespace Calabonga.Facts.RazorLibrary
                 return;
             }
 
-            if (args.Value!.ToString()!.Length > 3)
+            Founded = SearchService.SearchContent(args.Value.ToString());
+
+            if (Founded.Any())
             {
-                Founded = SearchService.SearchContent(args.Value.ToString());
+                Parallel.ForEach(Founded, x => ReplaceTerm(x, args.Value!.ToString()));
+            }
+        }
+
+        private void ReplaceTerm(FactViewModel fact, string term)
+        {
+            var regex = new Regex(term, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            var value = fact.Content;
+            if (regex.IsMatch(value))
+            {
+                fact.Content = regex.Replace(value, "<strong><mark>" + term + "</mark></strong>");
             }
         }
     }
