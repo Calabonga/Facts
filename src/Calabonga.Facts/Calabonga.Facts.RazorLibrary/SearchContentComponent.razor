@@ -1,0 +1,44 @@
+﻿@inherits SearchContentComponentModel
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">@(Founded?.Count ?? 0)</span>
+    <input type="text" @oninput="SearchContent" class="form-control" placeholder="ключевое слово" aria-label="ключевое поле" aria-describedby="basic-addon1">
+</div>
+
+@if (Founded != null && Founded.Any())
+{
+    foreach (var item in Founded)
+    {
+        <div class="card my-3" id="@item.Id">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <div class="float-start">@item.CreatedAt.ToString("d")</div>
+                    </div>
+                    <div class="col">
+                        <div class="float-end">
+                            <partial name="_FactActions" model="Model.Id" />
+                            <partial name="_FactLink" model="Model.Id" view-data="ViewData" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <p class="lead">
+                            @item.Content
+                        </p>
+                        <p>
+                            @foreach (var tag in item.Tags)
+                            {
+                                <a asp-controller="Facts" asp-action="Index" asp-route-tag="@tag.Name" 
+                                   class="badge bg-light text-dark" style="text-decoration: none">@tag.Name</a>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

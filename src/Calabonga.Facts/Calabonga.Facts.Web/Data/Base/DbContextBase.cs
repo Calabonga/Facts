@@ -161,7 +161,7 @@ namespace Calabonga.Facts.Web.Data.Base
         {
             // Added
 
-            const string defaultUser = "System";
+            const string defaultUser = "dev@calabonga.net";
             var defaultDate = DateTime.UtcNow;
 
             var addedEntities = ChangeTracker.Entries().Where(x => x.State == EntityState.Added);

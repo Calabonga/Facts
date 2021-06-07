@@ -16,7 +16,7 @@ namespace Calabonga.Facts.RazorLibrary
         [Inject]
         public IJSRuntime JsRuntime { get; set; }
 
-        [Inject] private ITagSearchService TagSearchService { get; set; }
+        [Inject] private ISearchService SearchService { get; set; }
 
         /// <summary>
         /// Represents items that will be found by search
@@ -61,7 +61,7 @@ namespace Calabonga.Facts.RazorLibrary
                 return;
             }
 
-            Founded = TagSearchService.SearchTags(args.Value.ToString());
+            Founded = SearchService.SearchTags(args.Value.ToString());
         }
 
         protected async Task AddTag(string value)

@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Records;
 using Calabonga.Facts.Web.Data;
@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Calabonga.Facts.Contracts;
 
 namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 {

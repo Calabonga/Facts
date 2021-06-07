@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -12,6 +12,7 @@ using Calabonga.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq.Expressions;
+using Calabonga.Facts.Contracts;
 
 namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 {
@@ -62,7 +63,10 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Queries
             var mapped = _mapper.Map<IPagedList<FactViewModel>>(items);
 
             operation.Result = mapped;
-            operation.AddSuccess("Success");
+            if (mapped.TotalCount > 0)
+            {
+                operation.AddSuccess("Success");
+            }
             return operation;
         }
 
