@@ -62,13 +62,12 @@
    * [х] Поиск меток для удаления и для создания FindDifference
    * [х] Обновление меток для факта ProcessTagsAsync
    * [х] Обновление факта и меток FactUpdateRequest, FactUpdateRequestHandler
-* [ ] Администратор: Страница "удаления факта"
 * [x] Администратор: Реализация постраничного просмотра списка сообщений (Notification)
 * [x] Администратор: Страница "отправки почтового сообщения"
-* [ ] HostedService: Сработка по расписанию (Cron)
-  * [ ] Отправка почты. Создание IEmailService.
-  * [ ] INotificationProvider обработчик Notification, отправка сообщений и обновление статуса отправки
-  * [ ] Реализация BackgroundWorker для отправки почтовых писем из таблицы Notification
+* [x] HostedService: Сработка по расписанию (Cron)
+  * [x] Отправка почты. Создание IEmailService.
+  * [x] INotificationProvider обработчик Notification, отправка сообщений и обновление статуса отправки
+  * [x] Реализация BackgroundWorker для отправки почтовых писем из таблицы Notification
 
 # Дополнительно
 * [ASP.NET Core MVC "Только факты" (NET5.0)](https://github.com/Calabonga/Facts/wiki)
