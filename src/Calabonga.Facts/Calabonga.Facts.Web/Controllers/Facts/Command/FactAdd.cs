@@ -48,9 +48,9 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Command
             var fact = _mapper.Map<Fact>(request.Model);
 
             // processing tag from ViewModel
-            await _tagService.ProcessTagsAsync(request.Model, fact, cancellationToken);
 
             await repository.InsertAsync(fact, cancellationToken);
+            await _tagService.ProcessTagsAsync(request.Model, fact, cancellationToken);
 
             await _unitOfWork.SaveChangesAsync();
             if (_unitOfWork.LastSaveChangesResult.IsOk)

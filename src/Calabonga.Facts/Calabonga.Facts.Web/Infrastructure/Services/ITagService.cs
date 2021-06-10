@@ -9,6 +9,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Calabonga.Facts.Web.Mediatr;
+using MediatR;
 
 namespace Calabonga.Facts.Web.Infrastructure.Services
 {
@@ -32,9 +34,14 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
 
     public class TagService : ITagService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork<ApplicationDbContext> _unitOfWork;
+        private readonly IMediator _mediator;
 
-        public TagService(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
+        public TagService(IUnitOfWork<ApplicationDbContext> unitOfWork, IMediator mediator)
+        {
+            _unitOfWork = unitOfWork;
+            _mediator = mediator;
+        }
 
         /// <summary>
         /// Generates tags as cloud
@@ -42,18 +49,27 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
         /// <returns></returns>
         public async Task<List<TagCloud>> GetCloudAsync()
         {
-            var tags = await _unitOfWork.GetRepository<Tag>()
-                                        .GetAll(true)
-                                        .Select(s => new TagCloud
-                                        {
-                                            Name = s.Name,
-                                            Id = s.Id,
-                                            CssClass = "",
-                                            Total = s.Facts == null ? 0 : s.Facts!.Count
-                                        })
-                                        .ToListAsync();
+            // Calabonga: refactor later TO SLOW (2021-06-10 02:20 ITagService)
+            var tags = _unitOfWork.GetRepository<Tag>()
+                                  .GetAll(true)
+                                  .AsSingleQuery()
+                                  .Select(s => new TagCloud
+                                  {
+                                      Name = s.Name,
+                                      Id = s.Id,
+                                      CssClass = "",
+                                      Total = s.Facts == null ? 0 : s.Facts!.Count
+                                  }).ToList();
 
-            return FactHelper.Generate(tags, 10);
+
+            var anyEmpty = tags.Where(x => x.Total == 0).ToList();
+            if (anyEmpty.Any())
+            {
+                var message = string.Join(" ", anyEmpty.Select(x => $"{x.Name} = {x.Total} ({x.Id})"));
+                await _mediator.Publish(new ErrorNotification(message));
+            }
+            
+            return FactHelper.Generate(tags.ToList(), 10);
         }
 
         /// <summary>
@@ -101,8 +117,8 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
 
                     fact.Tags!.Remove(tag);
 
-                    var used = _unitOfWork.GetRepository<Fact>()
-                                          .GetAll(x => x.Tags!.Select(t => t.Name).Contains(tag.Name), true)
+                    var used = _unitOfWork.GetRepository<Fact>().GetAll(true) //x => x.Tags!.Select(t => t.Name).Contains(tag.Name), true)
+                                          .Where(x => x.Tags!.Select(t => t.Name).Contains(name))
                                           .ToArray();
 
                     if (used.Length == 1)
@@ -111,8 +127,8 @@ namespace Calabonga.Facts.Web.Infrastructure.Services
                     }
                 }
             }
-           
-            
+
+
 
             foreach (var name in toCreate)
             {
