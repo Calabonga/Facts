@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calabonga.Facts.Web.ViewModels
+namespace Calabonga.Facts.Contracts
 {
     public class TagViewModel
     {

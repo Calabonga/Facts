@@ -25,7 +25,7 @@ namespace Calabonga.Facts.Web.Controllers.Facts
             ViewData["tag"] = tag;
             var index = pageIndex ?? 1;
             var operation = await _mediator.Send(new FactGetPagedRequest(index, tag, search), HttpContext.RequestAborted);
-            if (operation.Ok && operation.Result.TotalPages < index)
+            if (operation.Ok && operation.Result.TotalPages < index && operation.Metadata is not null)
             {
                 return RedirectToAction(nameof(Index), new
                 {

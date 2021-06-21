@@ -42,23 +42,26 @@ namespace Calabonga.Facts.Web.Controllers.Facts.Command
             CancellationToken cancellationToken)
         {
             var operation = OperationResult.CreateResult<Unit>();
+            await using var transaction = await _unitOfWork.BeginTransactionAsync();
 
             var repository = _unitOfWork.GetRepository<Fact>();
             var fact = _mapper.Map<Fact>(request.Model);
 
             // processing tag from ViewModel
-            await _tagService.ProcessTagsAsync(request.Model, fact, cancellationToken);
 
             await repository.InsertAsync(fact, cancellationToken);
+            await _tagService.ProcessTagsAsync(request.Model, fact, cancellationToken);
 
             await _unitOfWork.SaveChangesAsync();
             if (_unitOfWork.LastSaveChangesResult.IsOk)
             {
+                await transaction.CommitAsync(cancellationToken);
                 operation.AddSuccess($"Fact {fact.Id} successfully created");
                 operation.Result = Unit.Value;
                 return operation;
             }
 
+            await transaction.RollbackAsync(cancellationToken);
             operation.AddError(_unitOfWork.LastSaveChangesResult.Exception);
             return operation;
 

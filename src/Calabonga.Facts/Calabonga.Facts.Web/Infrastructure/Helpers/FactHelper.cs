@@ -16,7 +16,6 @@ namespace Calabonga.Facts.Web.Infrastructure.Helpers
         {
             var totalCount = items.Count;
             var tagsCloud = items.OrderBy(x => x.Total).ToList();
-
             var clusters = new List<List<TagCloud>>();
             if (totalCount > 0)
             {

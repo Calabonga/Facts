@@ -5,21 +5,22 @@
 }
 <div class="row">
     <div class="col">
+        
+        <div class="mt-3">
+            <label class="form-label">Поиск по тексту</label>
+            <component type="typeof(SearchContentComponent)" render-mode="ServerPrerendered"/>
+        </div>
 
         @if (Model is not null)
         {
             <form id="fact-editor" asp-action="Add" asp-controller="Facts" Method="post" asp-antiforgery="true">
 
-                <input asp-for="TotalTags" type="hidden" value="@Model.Tags?.Count" />
+                <input asp-for="TotalTags" type="hidden" value="@Model.Tags?.Count"/>
 
                 @if (ViewData["Error"] != null)
                 {
                     <div class="alert alert-danger">@ViewData["Error"]</div>
                 }
-
-                <div class="mb-3">
-                    <h2>@ViewData["Title"]</h2>
-                </div>
 
                 <div class="mb-3">
                     <label asp-for="Content" class=" form-label"></label>
@@ -31,15 +32,15 @@
                 @if (Model.Tags != null)
                 {
                     <component type="typeof(TagsEditorComponent)" render-mode="ServerPrerendered"
-                               param-Tags="@Model.Tags" />
-                    <br />
+                               param-Tags="@Model.Tags"/>
+                    <br/>
                     <span asp-validation-for="TotalTags" class="text-danger"></span>
                 }
 
                 <div class="my-5">
                     <button type="submit" class="btn btn-outline-primary">Сохранить</button>
                 </div>
-                
+
                 <div asp-validation-summary="All" class="text-danger"></div>
 
             </form>

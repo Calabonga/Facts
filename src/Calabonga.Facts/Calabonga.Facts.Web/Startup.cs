@@ -56,7 +56,7 @@ namespace Calabonga.Facts.Web
             services.AddTransient<IPagerTagHelperService, PagerTagHelperService>();
             services.AddTransient<INotificationProvider, NotificationProvider>();
             services.AddTransient<IVersionInfoService, VersionInfoService>();
-            services.AddTransient<ITagSearchService, TagSearchService>();
+            services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IFactService, FactService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<ITagService, TagService>();

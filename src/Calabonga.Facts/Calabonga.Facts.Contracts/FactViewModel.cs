@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Calabonga.Facts.Web.ViewModels
+namespace Calabonga.Facts.Contracts
 {
     public class FactViewModel
     {
