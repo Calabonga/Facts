@@ -22,7 +22,6 @@ namespace Calabonga.Facts.Web.Infrastructure.HostedServices
             var notificationProvider = scope.ServiceProvider.GetService<INotificationProvider>();
             await notificationProvider!.ProcessAsync(token);
             Logger.NotificationProcessed(DateTime.Now.ToString("F"));
-
         }
 
         protected override bool IsExecuteOnServerRestart => true;

@@ -16,12 +16,19 @@
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <p class="lead">
-                    @Model.Content
-                </p>
-                <p>
-                    <partial name="_Tags" model="Model.Tags" />
-                </p>
+                @if (ViewData["HideLink"] is null)
+                {
+                    <p class="lead">
+                        @Model.Content
+                    </p>
+                    <p>
+                        <partial name="_Tags" model="Model.Tags" />
+                    </p>
+                }
+                else
+                {
+                    <img src="@Url.Action("GetPicture", "Site", new { factId = Model.Id })" class="img-fluid" />
+                }
             </div>
         </div>
     </div>
