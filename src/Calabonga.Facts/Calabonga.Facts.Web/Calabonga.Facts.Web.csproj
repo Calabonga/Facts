@@ -5,6 +5,7 @@
     <UserSecretsId>aspnet-Calabonga.Facts.Web-12D08E8E-C85C-41F9-AF04-2F95B8856C5D</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <Nullable>enable</Nullable>
+    <EnableMsDeployAppOffline>true</EnableMsDeployAppOffline>
   </PropertyGroup>
 
   <ItemGroup>
