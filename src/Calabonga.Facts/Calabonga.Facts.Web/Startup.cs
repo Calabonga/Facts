@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
 using Calabonga.Facts.Web.Infrastructure.HostedServices;
 using Calabonga.Facts.Web.Infrastructure.Providers;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace Calabonga.Facts.Web
 {
@@ -41,6 +42,9 @@ namespace Calabonga.Facts.Web
             });
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // Add a DbContext to store your Database Keys
+            services.AddDbContext<MyKeysContext>(options => options.UseSqlServer(Configuration.GetConnectionString(nameof(MyKeysContext))));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddUnitOfWork<ApplicationDbContext>();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -65,6 +69,10 @@ namespace Calabonga.Facts.Web
 
             // hosted services
             services.AddHostedService<NotificationHostedService>();
+
+            // other settings
+            services.AddAntiforgery();
+            services.AddDataProtection().PersistKeysToDbContext<MyKeysContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
