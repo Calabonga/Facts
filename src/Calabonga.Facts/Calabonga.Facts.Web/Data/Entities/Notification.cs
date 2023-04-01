@@ -1,6 +1,6 @@
 using Calabonga.EntityFrameworkCore.Entities.Base;
 
-namespace Calabonga.Facts.Web.Data
+namespace Calabonga.Facts.Web.Data.Entities
 {
     /// <summary>
     /// Notification entity

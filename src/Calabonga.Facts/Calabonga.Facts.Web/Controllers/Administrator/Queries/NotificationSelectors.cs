@@ -1,4 +1,4 @@
-using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.Facts.Web.ViewModels;
 using System;
 using System.Linq.Expressions;

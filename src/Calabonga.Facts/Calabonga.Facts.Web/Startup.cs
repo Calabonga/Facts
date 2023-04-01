@@ -1,10 +1,15 @@
-﻿using Calabonga.AspNetCore.Controllers.Extensions;
+﻿using System.Threading.Tasks;
+using Calabonga.AspNetCore.Controllers.Extensions;
 using Calabonga.Facts.Contracts;
-using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Data.Main;
+using Calabonga.Facts.Web.Data.Protection;
+using Calabonga.Facts.Web.Infrastructure.HostedServices;
+using Calabonga.Facts.Web.Infrastructure.Providers;
 using Calabonga.Facts.Web.Infrastructure.Services;
 using Calabonga.Facts.Web.Infrastructure.TagHelpers.PagedListTagHelper;
 using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -12,10 +17,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Threading.Tasks;
-using Calabonga.Facts.Web.Infrastructure.HostedServices;
-using Calabonga.Facts.Web.Infrastructure.Providers;
-using Microsoft.AspNetCore.DataProtection;
 
 namespace Calabonga.Facts.Web
 {
@@ -51,7 +52,7 @@ namespace Calabonga.Facts.Web
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup).Assembly);
             services.AddCommandAndQueries(typeof(Startup).Assembly);
 
             services.AddControllersWithViews();
@@ -129,9 +130,9 @@ namespace Calabonga.Facts.Web
                     context.Response.Redirect("/Identity/Account/Login?returnUrl=~%2F", true, true)));
 
                 // Post
-                endpoints.MapPost("/Identity/Account/Register", context => Task.Factory.StartNew(() => 
+                endpoints.MapPost("/Identity/Account/Register", context => Task.Factory.StartNew(() =>
                     context.Response.Redirect("/Identity/Account/Login?returnUrl=~%2F", true, true)));
-                
+
                 #endregion
             });
         }

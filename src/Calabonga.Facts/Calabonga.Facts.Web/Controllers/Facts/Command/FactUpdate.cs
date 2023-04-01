@@ -5,12 +5,12 @@ using Calabonga.OperationResults;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.Infrastructure.Services;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.UnitOfWork;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Calabonga.Facts.Web.Data.Entities;
 
 namespace Calabonga.Facts.Web.Controllers.Facts.Command
 {

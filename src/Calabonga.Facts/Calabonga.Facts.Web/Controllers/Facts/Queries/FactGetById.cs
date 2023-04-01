@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Base;
-using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.ViewModels;
 using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
@@ -10,6 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Calabonga.Facts.Contracts;
+using Calabonga.Facts.Web.Data.Entities;
 
 namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 {

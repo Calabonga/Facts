@@ -1,8 +1,7 @@
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.Facts.Web.Extensions;
 using Calabonga.UnitOfWork;
 

@@ -1,12 +1,12 @@
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using AutoMapper;
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Base;
-using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.Facts.Web.ViewModels;
 using Calabonga.UnitOfWork;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Calabonga.Facts.Web.Controllers.Administrator.Queries
 {

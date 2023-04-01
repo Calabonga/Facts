@@ -7,7 +7,7 @@ using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Calabonga.Facts.Web.Data.Base
+namespace Calabonga.Facts.Web.Data.Main.Base
 {
     public abstract class DbContextBase : IdentityDbContext
     {

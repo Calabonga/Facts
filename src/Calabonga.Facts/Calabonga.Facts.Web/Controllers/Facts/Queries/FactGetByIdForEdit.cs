@@ -1,6 +1,5 @@
 ﻿using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Records;
-using Calabonga.Facts.Web.Data;
 using Calabonga.Facts.Web.ViewModels;
 using Calabonga.Microservices.Core.Exceptions;
 using Calabonga.OperationResults;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Calabonga.Facts.Web.Infrastructure;
+using Calabonga.Facts.Web.Data.Entities;
 
 namespace Calabonga.Facts.Web.Controllers.Facts.Queries
 {

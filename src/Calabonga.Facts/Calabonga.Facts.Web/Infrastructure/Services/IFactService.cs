@@ -1,4 +1,4 @@
-﻿using Calabonga.Facts.Web.Data;
+﻿using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

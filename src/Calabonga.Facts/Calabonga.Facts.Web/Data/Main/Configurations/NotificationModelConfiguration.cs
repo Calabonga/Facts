@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Calabonga.Facts.Web.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Calabonga.Facts.Web.Data.Configurations
+namespace Calabonga.Facts.Web.Data.Main.Configurations
 {
     public class NotificationModelConfiguration : IEntityTypeConfiguration<Notification>
     {

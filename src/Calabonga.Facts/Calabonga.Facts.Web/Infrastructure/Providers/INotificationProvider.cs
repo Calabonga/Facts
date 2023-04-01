@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.UnitOfWork;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;

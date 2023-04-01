@@ -1,4 +1,4 @@
-﻿using Calabonga.Facts.Web.Data;
+﻿using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.Facts.Web.Infrastructure.Mappers.Base;
 using Calabonga.Facts.Web.Infrastructure.Providers;
 

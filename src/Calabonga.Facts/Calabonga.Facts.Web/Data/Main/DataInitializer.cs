@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Calabonga.Facts.Web.Data
+namespace Calabonga.Facts.Web.Data.Main
 {
     public static class DataInitializer
     {

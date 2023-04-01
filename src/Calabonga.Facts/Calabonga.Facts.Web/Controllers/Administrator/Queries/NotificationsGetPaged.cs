@@ -1,6 +1,6 @@
 using Calabonga.AspNetCore.Controllers;
 using Calabonga.AspNetCore.Controllers.Base;
-using Calabonga.Facts.Web.Data;
+using Calabonga.Facts.Web.Data.Entities;
 using Calabonga.Facts.Web.ViewModels;
 using Calabonga.OperationResults;
 using Calabonga.PredicatesBuilder;

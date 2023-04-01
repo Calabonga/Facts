@@ -1,10 +1,10 @@
 ﻿using Calabonga.Facts.Contracts;
-using Calabonga.Facts.Web.Data;
 using Calabonga.UnitOfWork;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Calabonga.Facts.Web.Data.Entities;
 
 namespace Calabonga.Facts.Web.Infrastructure.Services
 {

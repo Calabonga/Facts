@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Calabonga.EntityFrameworkCore.Entities.Base;
 
-namespace Calabonga.Facts.Web.Data
+namespace Calabonga.Facts.Web.Data.Entities
 {
     public class Fact : Auditable
     {

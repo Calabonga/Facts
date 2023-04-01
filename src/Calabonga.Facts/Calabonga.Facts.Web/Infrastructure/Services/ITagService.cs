@@ -1,5 +1,4 @@
-﻿using Calabonga.Facts.Web.Data;
-using Calabonga.Facts.Web.Infrastructure.Helpers;
+﻿using Calabonga.Facts.Web.Infrastructure.Helpers;
 using Calabonga.Facts.Web.ViewModels;
 using Calabonga.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Calabonga.Facts.Web.Mediatr;
 using MediatR;
+using Calabonga.Facts.Web.Data.Main;
+using Calabonga.Facts.Web.Data.Entities;
 
 namespace Calabonga.Facts.Web.Infrastructure.Services
 {
